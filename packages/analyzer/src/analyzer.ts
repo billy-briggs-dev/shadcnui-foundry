@@ -6,9 +6,9 @@ import { createLogger } from "@shadcnui-foundry/core";
  * Analyzes a raw registry artifact and produces a ComponentIR.
  *
  * Walks the artifact's file list and extracts structural metadata
- * (props, slots, variants) into the framework-neutral IR.
+ * (props, variants) into the framework-neutral IR.
  *
- * TODO: implement AST-based prop/slot extraction as the IR schema matures.
+ * TODO: implement AST-based prop/variant extraction as the IR schema matures.
  */
 export class RegistryAnalyzer implements Analyzer {
   readonly name = "registry-analyzer";
@@ -17,13 +17,28 @@ export class RegistryAnalyzer implements Analyzer {
   async analyze(artifact: RawRegistryArtifact): Promise<PipelineResult<ComponentIR>> {
     this.logger.info("Analyzing artifact", { name: artifact.name });
 
+    const now = new Date().toISOString();
+
     // Stub: return a minimal IR shell populated from the raw artifact metadata.
+    // TODO: derive category, props, variants, a11y from AST analysis.
     const ir: ComponentIR = {
+      id: artifact.name,
       name: artifact.name,
-      sourceArtifact: artifact,
+      description: "",
+      category: "primitive",
       props: [],
-      slots: [],
       variants: [],
+      a11y: { roles: [], keyboardInteractions: [], ariaAttributes: [] },
+      dependencies: [],
+      tags: [],
+      provenance: {
+        registry: "shadcn/ui",
+        registryName: artifact.name,
+        fetchedAt: artifact.fetchedAt ?? now,
+        sourceUrl: artifact.sourceUrl,
+      },
+      generatedAt: now,
+      irVersion: "1.0.0",
     };
 
     return { success: true, data: ir };
