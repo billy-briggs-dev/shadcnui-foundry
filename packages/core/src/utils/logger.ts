@@ -62,6 +62,15 @@ export class Logger {
   }
 }
 
+const VALID_LOG_LEVELS = new Set<string>(["debug", "info", "warn", "error"]);
+
+function resolveLogLevel(envValue: string | undefined): LogLevel {
+  if (envValue === undefined) return "info";
+  if (VALID_LOG_LEVELS.has(envValue)) return envValue as LogLevel;
+  process.stderr.write(`[logger] Invalid LOG_LEVEL "${envValue}"; defaulting to "info"\n`);
+  return "info";
+}
+
 export function createLogger(name: string, minLevel?: LogLevel): Logger {
-  return new Logger(name, minLevel ?? (process.env["LOG_LEVEL"] as LogLevel | undefined) ?? "info");
+  return new Logger(name, minLevel ?? resolveLogLevel(process.env["LOG_LEVEL"]));
 }
