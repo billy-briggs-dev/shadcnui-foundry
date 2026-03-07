@@ -1,0 +1,11 @@
+# Default owners for everything in the repo
+* @billy-briggs-dev
+
+# IR schema changes require explicit review
+/packages/ir/ @billy-briggs-dev
+
+# Pipeline interfaces
+/packages/core/ @billy-briggs-dev
+
+# CI/CD changes
+/.github/workflows/ @billy-briggs-dev

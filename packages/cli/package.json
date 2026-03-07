@@ -1,0 +1,42 @@
+{
+  "name": "@shadcnui-foundry/cli",
+  "version": "0.0.0",
+  "description": "CLI for running ingestion and generation tasks",
+  "type": "module",
+  "bin": {
+    "foundry": "./dist/bin/foundry.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/bin/foundry.ts src/index.ts --format esm --dts --clean",
+    "dev": "tsup src/bin/foundry.ts --format esm --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@shadcnui-foundry/core": "workspace:*",
+    "@shadcnui-foundry/ir": "workspace:*",
+    "@shadcnui-foundry/registry-ingest": "workspace:*",
+    "commander": "^12.1.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@shadcnui-foundry/typescript-config": "workspace:*",
+    "@shadcnui-foundry/vitest-config": "workspace:*",
+    "@types/node": "^25.3.5",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

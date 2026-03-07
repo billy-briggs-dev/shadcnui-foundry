@@ -1,0 +1,38 @@
+{
+  "name": "@shadcnui-foundry/registry-ingest",
+  "version": "0.0.0",
+  "description": "Ingest component definitions from the shadcn/ui registry",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@shadcnui-foundry/core": "workspace:*",
+    "@shadcnui-foundry/ir": "workspace:*",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@shadcnui-foundry/typescript-config": "workspace:*",
+    "@shadcnui-foundry/vitest-config": "workspace:*",
+    "@types/node": "^25.3.5",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

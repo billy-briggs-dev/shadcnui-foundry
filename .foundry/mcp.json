@@ -1,0 +1,26 @@
+{
+  "$schema": "./mcp-schema.json",
+  "version": "1",
+  "description": "MCP integration configuration for shadcnui-foundry",
+  "servers": {
+    "shadcn-registry": {
+      "type": "http",
+      "baseUrl": "https://ui.shadcn.com/registry",
+      "description": "shadcn/ui public registry API",
+      "enabled": true,
+      "cacheDir": ".foundry/cache",
+      "offlineFallback": true
+    }
+  },
+  "cache": {
+    "dir": ".foundry/cache",
+    "ttlSeconds": 86400,
+    "storeProvenance": true,
+    "hashAlgorithm": "sha256"
+  },
+  "offline": {
+    "mode": false,
+    "fallbackToCache": true,
+    "warnOnMiss": true
+  }
+}

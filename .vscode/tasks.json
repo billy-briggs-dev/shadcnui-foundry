@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build all",
+      "type": "shell",
+      "command": "pnpm build",
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Test all",
+      "type": "shell",
+      "command": "pnpm test",
+      "group": { "kind": "test", "isDefault": true },
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Lint (Biome check)",
+      "type": "shell",
+      "command": "pnpm check",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Typecheck all",
+      "type": "shell",
+      "command": "pnpm typecheck",
+      "presentation": { "reveal": "always", "panel": "shared" },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Clean all",
+      "type": "shell",
+      "command": "pnpm clean",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "foundry ingest (prompt)",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js ingest ${input:componentName}",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "componentName",
+      "type": "promptString",
+      "description": "shadcn/ui component name (e.g. button, dialog)"
+    }
+  ]
+}
