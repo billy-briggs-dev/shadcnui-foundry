@@ -28,7 +28,7 @@ export class RegistryAnalyzer implements Analyzer {
       category: "primitive",
       props: [],
       variants: [],
-      a11y: { roles: [], keyboardInteractions: [], ariaAttributes: [] },
+      a11y: { roles: [], keyboardInteractions: [], requiredAttributes: [], optionalAttributes: [], focusManagement: "none", liveRegion: false, wcagCriteria: [] },
       dependencies: [],
       tags: [],
       provenance: {
