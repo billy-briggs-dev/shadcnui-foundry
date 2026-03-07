@@ -1,8 +1,34 @@
 import type { ComponentCategory } from "@shadcnui-foundry/ir";
 
-const OVERLAY_NAMES = new Set(["dialog", "popover", "tooltip", "dropdown-menu", "context-menu", "alert-dialog", "sheet", "drawer"]);
-const FORM_NAMES = new Set(["input", "checkbox", "radio-group", "select", "switch", "slider", "textarea", "form", "label"]);
-const NAVIGATION_NAMES = new Set(["breadcrumb", "pagination", "tabs", "navigation-menu", "menubar", "command"]);
+const OVERLAY_NAMES = new Set([
+  "dialog",
+  "popover",
+  "tooltip",
+  "dropdown-menu",
+  "context-menu",
+  "alert-dialog",
+  "sheet",
+  "drawer",
+]);
+const FORM_NAMES = new Set([
+  "input",
+  "checkbox",
+  "radio-group",
+  "select",
+  "switch",
+  "slider",
+  "textarea",
+  "form",
+  "label",
+]);
+const NAVIGATION_NAMES = new Set([
+  "breadcrumb",
+  "pagination",
+  "tabs",
+  "navigation-menu",
+  "menubar",
+  "command",
+]);
 const FEEDBACK_NAMES = new Set(["alert", "progress", "skeleton", "sonner", "toast"]);
 const LAYOUT_NAMES = new Set(["card", "separator", "aspect-ratio", "scroll-area", "resizable"]);
 const COMPOSITE_NAMES = new Set(["accordion", "collapsible"]);

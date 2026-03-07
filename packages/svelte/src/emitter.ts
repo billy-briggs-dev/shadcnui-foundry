@@ -1,5 +1,5 @@
-import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Emitter, TransformedComponent } from "@shadcnui-foundry/core";
+import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 
 export class SvelteEmitter implements Emitter {
   readonly framework = "svelte";
@@ -17,14 +17,16 @@ export class SvelteEmitter implements Emitter {
 `;
     return {
       success: true,
-      data: [{
-        path: `${transformed.componentId}/${transformed.componentId}.svelte`,
-        content,
-        componentId: transformed.componentId,
-        framework: "svelte",
-        generated: true,
-        irHash: "",
-      }],
+      data: [
+        {
+          path: `${transformed.componentId}/${transformed.componentId}.svelte`,
+          content,
+          componentId: transformed.componentId,
+          framework: "svelte",
+          generated: true,
+          irHash: "",
+        },
+      ],
     };
   }
 }

@@ -1,6 +1,6 @@
 import type { Ingester, RawRegistryArtifact } from "@shadcnui-foundry/core";
-import type { PipelineResult } from "@shadcnui-foundry/ir";
 import { createLogger } from "@shadcnui-foundry/core";
+import type { PipelineResult } from "@shadcnui-foundry/ir";
 import { ArtifactCache } from "./cache.js";
 import { ShadcnRegistryItemSchema } from "./schemas.js";
 
@@ -132,7 +132,7 @@ export class ShadcnRegistryIngester implements Ingester {
           errors: [{ code: "FETCH_ERROR", message: `Index returned ${response.status}` }],
         };
       }
-      const data = await response.json() as { items?: Array<{ name: string }> };
+      const data = (await response.json()) as { items?: Array<{ name: string }> };
       const names = (data.items ?? []).map((i) => i.name);
       this.cache.set("shadcn", "__index__", names);
       return { success: true, data: names };

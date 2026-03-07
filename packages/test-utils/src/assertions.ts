@@ -1,5 +1,5 @@
-import { expect } from "vitest";
 import type { PipelineResult } from "@shadcnui-foundry/ir";
+import { expect } from "vitest";
 
 /**
  * Asserts that a PipelineResult is successful and returns the data.

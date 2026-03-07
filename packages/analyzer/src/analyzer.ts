@@ -1,6 +1,6 @@
 import type { Analyzer, RawRegistryArtifact } from "@shadcnui-foundry/core";
-import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 import { createLogger } from "@shadcnui-foundry/core";
+import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 
 /**
  * Analyzes a raw registry artifact and produces a ComponentIR.
@@ -28,7 +28,15 @@ export class RegistryAnalyzer implements Analyzer {
       category: "primitive",
       props: [],
       variants: [],
-      a11y: { roles: [], keyboardInteractions: [], requiredAttributes: [], optionalAttributes: [], focusManagement: "none", liveRegion: false, wcagCriteria: [] },
+      a11y: {
+        roles: [],
+        keyboardInteractions: [],
+        requiredAttributes: [],
+        optionalAttributes: [],
+        focusManagement: "none",
+        liveRegion: false,
+        wcagCriteria: [],
+      },
       dependencies: [],
       tags: [],
       provenance: {

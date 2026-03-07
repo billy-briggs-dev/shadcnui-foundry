@@ -3,9 +3,10 @@ import type { DesignToken } from "@shadcnui-foundry/ir";
 /**
  * Extract CSS variable tokens from a shadcn/ui registry cssVars object.
  */
-export function extractTokensFromCssVars(
-  cssVars: { light?: Record<string, string>; dark?: Record<string, string> }
-): DesignToken[] {
+export function extractTokensFromCssVars(cssVars: {
+  light?: Record<string, string>;
+  dark?: Record<string, string>;
+}): DesignToken[] {
   const tokens: DesignToken[] = [];
   const source = cssVars.light ?? {};
 

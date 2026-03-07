@@ -22,7 +22,7 @@ const LEVEL_ORDER: Record<LogLevel, number> = {
 export class Logger {
   constructor(
     private readonly name: string,
-    private readonly minLevel: LogLevel = "info"
+    private readonly minLevel: LogLevel = "info",
   ) {}
 
   private log(level: LogLevel, message: string, context?: Record<string, unknown>): void {
@@ -31,18 +31,18 @@ export class Logger {
     const entry: LogEntry = {
       level,
       message: `[${this.name}] ${message}`,
-      context,
+      ...(context !== undefined && { context }),
       timestamp: new Date().toISOString(),
     };
 
     const formatted =
-      process.env["LOG_FORMAT"] === "json"
+      process.env.LOG_FORMAT === "json"
         ? JSON.stringify(entry)
         : `${entry.timestamp} ${entry.level.toUpperCase().padEnd(5)} ${entry.message}${
             context ? ` ${JSON.stringify(context)}` : ""
           }`;
 
-    process.stderr.write(formatted + "\n");
+    process.stderr.write(`${formatted}\n`);
   }
 
   debug(message: string, context?: Record<string, unknown>): void {
@@ -72,5 +72,5 @@ function resolveLogLevel(envValue: string | undefined): LogLevel {
 }
 
 export function createLogger(name: string, minLevel?: LogLevel): Logger {
-  return new Logger(name, minLevel ?? resolveLogLevel(process.env["LOG_LEVEL"]));
+  return new Logger(name, minLevel ?? resolveLogLevel(process.env.LOG_LEVEL));
 }

@@ -22,12 +22,7 @@ export type PipelineError = {
 /**
  * Framework targets supported by the generation pipeline.
  */
-export type FrameworkTarget =
-  | "react"
-  | "vue"
-  | "svelte"
-  | "angular"
-  | "lit";
+export type FrameworkTarget = "react" | "vue" | "svelte" | "angular" | "lit";
 
 /**
  * A generated file artifact from the emit stage.

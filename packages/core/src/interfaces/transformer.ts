@@ -20,7 +20,5 @@ export interface Transformer {
   /**
    * Transform a ComponentIR into a framework-specific intermediate form.
    */
-  transform(
-    ir: ComponentIR
-  ): Promise<PipelineResult<TransformedComponent>>;
+  transform(ir: ComponentIR): Promise<PipelineResult<TransformedComponent>>;
 }

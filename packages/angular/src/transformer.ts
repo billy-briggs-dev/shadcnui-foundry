@@ -1,5 +1,5 @@
+import type { TransformedComponent, Transformer } from "@shadcnui-foundry/core";
 import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
-import type { Transformer, TransformedComponent } from "@shadcnui-foundry/core";
 
 export class AngularTransformer implements Transformer {
   readonly framework = "angular" as const;

@@ -1,5 +1,5 @@
-import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Emitter, TransformedComponent } from "@shadcnui-foundry/core";
+import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 
 export class LitEmitter implements Emitter {
   readonly framework = "lit";
@@ -30,14 +30,16 @@ declare global {
 `;
     return {
       success: true,
-      data: [{
-        path: `${transformed.componentId}/${tagName}.ts`,
-        content,
-        componentId: transformed.componentId,
-        framework: "lit",
-        generated: true,
-        irHash: "",
-      }],
+      data: [
+        {
+          path: `${transformed.componentId}/${tagName}.ts`,
+          content,
+          componentId: transformed.componentId,
+          framework: "lit",
+          generated: true,
+          irHash: "",
+        },
+      ],
     };
   }
 }

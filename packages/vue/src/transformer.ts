@@ -1,5 +1,5 @@
+import type { TransformedComponent, Transformer } from "@shadcnui-foundry/core";
 import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
-import type { Transformer, TransformedComponent } from "@shadcnui-foundry/core";
 
 export class VueTransformer implements Transformer {
   readonly framework = "vue" as const;
@@ -16,6 +16,9 @@ export class VueTransformer implements Transformer {
   }
 
   private toPascalCase(id: string): string {
-    return id.split("-").map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join("");
+    return id
+      .split("-")
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+      .join("");
   }
 }

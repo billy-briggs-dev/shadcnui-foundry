@@ -1,21 +1,21 @@
 import { z } from "zod";
+import { A11ySchema } from "./a11y.js";
 import { PropSchema } from "./prop.js";
 import { VariantSchema } from "./variant.js";
-import { A11ySchema } from "./a11y.js";
 
 /**
  * Classification categories for components.
  * Determines translation complexity and strategy.
  */
 export const ComponentCategory = z.enum([
-  "primitive",     // Button, Badge, Label — minimal state, no portals
-  "form",          // Input, Checkbox, Select, Textarea — form integration
-  "layout",        // Card, Separator, AspectRatio — structural/visual only
-  "feedback",      // Alert, Progress, Skeleton, Toast — transient/informational
-  "navigation",    // Breadcrumb, Pagination, Tabs, NavigationMenu
-  "overlay",       // Dialog, Popover, Tooltip, DropdownMenu — portals/focus traps
-  "data-display",  // Table, List, Avatar — data rendering patterns
-  "composite",     // Accordion, Collapsible — compound components
+  "primitive", // Button, Badge, Label — minimal state, no portals
+  "form", // Input, Checkbox, Select, Textarea — form integration
+  "layout", // Card, Separator, AspectRatio — structural/visual only
+  "feedback", // Alert, Progress, Skeleton, Toast — transient/informational
+  "navigation", // Breadcrumb, Pagination, Tabs, NavigationMenu
+  "overlay", // Dialog, Popover, Tooltip, DropdownMenu — portals/focus traps
+  "data-display", // Table, List, Avatar — data rendering patterns
+  "composite", // Accordion, Collapsible — compound components
 ]);
 
 export type ComponentCategory = z.infer<typeof ComponentCategory>;

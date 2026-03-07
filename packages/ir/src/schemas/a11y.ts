@@ -12,12 +12,10 @@ export const A11ySchema = z.object({
     z.object({
       key: z.string(),
       description: z.string(),
-    })
+    }),
   ),
   /** Focus management strategy */
-  focusManagement: z
-    .enum(["none", "auto", "trap", "restore"])
-    .default("none"),
+  focusManagement: z.enum(["none", "auto", "trap", "restore"]).default("none"),
   /** Whether the component should be announced to screen readers on change */
   liveRegion: z.boolean().default(false),
   /** WCAG success criteria references */

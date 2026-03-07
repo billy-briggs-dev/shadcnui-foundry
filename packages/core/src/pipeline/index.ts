@@ -1,8 +1,8 @@
-import type { ComponentIR, FrameworkTarget, GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
-import type { Ingester, RawRegistryArtifact } from "../interfaces/ingester.js";
+import type { FrameworkTarget, GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Analyzer } from "../interfaces/analyzer.js";
-import type { Transformer } from "../interfaces/transformer.js";
 import type { Emitter } from "../interfaces/emitter.js";
+import type { Ingester } from "../interfaces/ingester.js";
+import type { Transformer } from "../interfaces/transformer.js";
 
 export type PipelineConfig = {
   ingester: Ingester;
@@ -49,7 +49,12 @@ export class Pipeline {
       if (!transformer || !emitter) {
         return {
           success: false,
-          errors: [{ code: "MISSING_TRANSFORMER", message: `No transformer/emitter for target: ${target}` }],
+          errors: [
+            {
+              code: "MISSING_TRANSFORMER",
+              message: `No transformer/emitter for target: ${target}`,
+            },
+          ],
         };
       }
 

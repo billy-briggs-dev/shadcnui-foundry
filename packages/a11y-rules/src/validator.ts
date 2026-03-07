@@ -1,5 +1,5 @@
-import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 import type { IRValidator, ValidationReport } from "@shadcnui-foundry/core";
+import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 import { A11Y_RULES } from "./rules.js";
 
 export class A11yValidator implements IRValidator {

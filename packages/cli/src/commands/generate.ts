@@ -1,5 +1,5 @@
-import { Command } from "commander";
 import { createLogger } from "@shadcnui-foundry/core";
+import { Command } from "commander";
 
 const logger = createLogger("CLI:generate");
 
@@ -17,15 +17,20 @@ export function generateCommand(): Command {
     .option("--offline", "Use cached artifacts only")
     .option("--out-dir <dir>", "Output directory", "generated")
     .option("--cache-dir <dir>", "Cache directory", ".foundry/cache")
-    .action(async (component: string, options: { target: string; offline?: boolean; outDir: string; cacheDir: string }) => {
-      const targets = options.target.split(",").map((t) => t.trim());
-      logger.info("Starting generation", { component, targets });
+    .action(
+      async (
+        component: string,
+        options: { target: string; offline?: boolean; outDir: string; cacheDir: string },
+      ) => {
+        const targets = options.target.split(",").map((t) => t.trim());
+        logger.info("Starting generation", { component, targets });
 
-      // TODO: wire up analyzer + transformers + emitters as packages are built
-      logger.warn("Generation pipeline not yet fully implemented — ingest stage only");
+        // TODO: wire up analyzer + transformers + emitters as packages are built
+        logger.warn("Generation pipeline not yet fully implemented — ingest stage only");
 
-      process.stdout.write(
-        JSON.stringify({ component, targets, status: "not-implemented" }, null, 2) + "\n"
-      );
-    });
+        process.stdout.write(
+          `${JSON.stringify({ component, targets, status: "not-implemented" }, null, 2)}\n`,
+        );
+      },
+    );
 }

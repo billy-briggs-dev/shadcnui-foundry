@@ -1,5 +1,5 @@
+import type { TransformedComponent, Transformer } from "@shadcnui-foundry/core";
 import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
-import type { Transformer, TransformedComponent } from "@shadcnui-foundry/core";
 
 /**
  * Transforms a ComponentIR into a React-specific intermediate form.
@@ -32,18 +32,29 @@ export class ReactTransformer implements Transformer {
 
   private mapPropType(type: string, values?: string[]): string {
     switch (type) {
-      case "string": return "string";
-      case "number": return "number";
-      case "boolean": return "boolean";
-      case "enum": return values ? values.map((v) => `"${v}"`).join(" | ") : "string";
-      case "node": return "React.ReactNode";
-      case "ref": return "React.Ref<HTMLElement>";
-      case "function": return "(...args: unknown[]) => unknown";
-      default: return "unknown";
+      case "string":
+        return "string";
+      case "number":
+        return "number";
+      case "boolean":
+        return "boolean";
+      case "enum":
+        return values ? values.map((v) => `"${v}"`).join(" | ") : "string";
+      case "node":
+        return "React.ReactNode";
+      case "ref":
+        return "React.Ref<HTMLElement>";
+      case "function":
+        return "(...args: unknown[]) => unknown";
+      default:
+        return "unknown";
     }
   }
 
   private toPascalCase(id: string): string {
-    return id.split("-").map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join("");
+    return id
+      .split("-")
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+      .join("");
   }
 }

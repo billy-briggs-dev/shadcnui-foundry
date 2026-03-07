@@ -9,8 +9,8 @@ export const PropType = z.enum([
   "object",
   "array",
   "function",
-  "node",      // Framework-specific render content (ReactNode, Slot, etc.)
-  "ref",       // Forwarded ref
+  "node", // Framework-specific render content (ReactNode, Slot, etc.)
+  "ref", // Forwarded ref
   "unknown",
 ]);
 

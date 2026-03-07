@@ -64,9 +64,7 @@ export class LocalFileIngester implements Ingester {
   async list(): Promise<PipelineResult<string[]>> {
     try {
       const files = readdirSync(this.artifactsDir);
-      const names = files
-        .filter((f) => f.endsWith(".json"))
-        .map((f) => f.replace(/\.json$/, ""));
+      const names = files.filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
       return { success: true, data: names };
     } catch (err) {
       return {

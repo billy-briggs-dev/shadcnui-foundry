@@ -11,7 +11,5 @@ export interface Analyzer {
   /**
    * Analyze a raw artifact and produce a ComponentIR.
    */
-  analyze(
-    artifact: RawRegistryArtifact
-  ): Promise<PipelineResult<ComponentIR>>;
+  analyze(artifact: RawRegistryArtifact): Promise<PipelineResult<ComponentIR>>;
 }

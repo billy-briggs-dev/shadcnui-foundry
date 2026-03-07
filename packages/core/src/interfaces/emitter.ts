@@ -11,7 +11,5 @@ export interface Emitter {
   /**
    * Emit source files from a transformed component.
    */
-  emit(
-    transformed: TransformedComponent
-  ): Promise<PipelineResult<GeneratedFile[]>>;
+  emit(transformed: TransformedComponent): Promise<PipelineResult<GeneratedFile[]>>;
 }

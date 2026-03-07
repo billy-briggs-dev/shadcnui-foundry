@@ -1,5 +1,5 @@
-import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Emitter, TransformedComponent } from "@shadcnui-foundry/core";
+import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 
 /**
  * Emits React TSX source files from a transformed component spec.
@@ -12,10 +12,15 @@ export class ReactEmitter implements Emitter {
   readonly framework = "react";
 
   async emit(transformed: TransformedComponent): Promise<PipelineResult<GeneratedFile[]>> {
-    const { componentName, propsInterface, variants, a11y } = transformed.spec as {
+    const { componentName, propsInterface, a11y } = transformed.spec as {
       componentName: string;
-      propsInterface: Array<{ name: string; type: string; required: boolean; defaultValue?: string; description?: string }>;
-      variants: Array<{ name: string; values: string[]; defaultValue?: string }>;
+      propsInterface: Array<{
+        name: string;
+        type: string;
+        required: boolean;
+        defaultValue?: string;
+        description?: string;
+      }>;
       a11y: { roles: string[] };
     };
 

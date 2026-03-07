@@ -4,8 +4,8 @@
  * @description Entry point for the foundry CLI.
  */
 import { Command } from "commander";
-import { ingestCommand } from "../commands/ingest.js";
 import { generateCommand } from "../commands/generate.js";
+import { ingestCommand } from "../commands/ingest.js";
 import { listCommand } from "../commands/list.js";
 
 const program = new Command();

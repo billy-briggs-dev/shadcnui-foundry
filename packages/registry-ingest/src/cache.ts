@@ -9,7 +9,7 @@ import { join } from "node:path";
 export class ArtifactCache {
   private readonly cacheDir: string;
 
-  constructor(cacheDir: string = ".foundry/cache") {
+  constructor(cacheDir = ".foundry/cache") {
     this.cacheDir = cacheDir;
     mkdirSync(this.cacheDir, { recursive: true });
   }
@@ -36,7 +36,7 @@ export class ArtifactCache {
     writeFileSync(
       path,
       JSON.stringify({ data, cachedAt: new Date().toISOString() }, null, 2),
-      "utf8"
+      "utf8",
     );
   }
 

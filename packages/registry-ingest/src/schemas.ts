@@ -17,7 +17,7 @@ export const ShadcnRegistryItemSchema = z.object({
       content: z.string().optional(),
       type: z.string().optional(),
       target: z.string().optional(),
-    })
+    }),
   ),
   tailwind: z
     .object({
@@ -46,7 +46,7 @@ export const ShadcnRegistryIndexSchema = z.object({
       name: z.string(),
       type: z.string(),
       description: z.string().optional(),
-    })
+    }),
   ),
 });
 

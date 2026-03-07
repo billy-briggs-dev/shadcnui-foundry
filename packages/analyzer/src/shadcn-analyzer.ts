@@ -1,5 +1,5 @@
-import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Analyzer, RawRegistryArtifact } from "@shadcnui-foundry/core";
+import type { ComponentIR, PipelineResult } from "@shadcnui-foundry/ir";
 import { ComponentIRSchema } from "@shadcnui-foundry/ir";
 import { classifyComponent } from "./category-classifier.js";
 

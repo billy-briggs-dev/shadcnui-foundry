@@ -1,5 +1,5 @@
-import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Emitter, TransformedComponent } from "@shadcnui-foundry/core";
+import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 
 export class VueEmitter implements Emitter {
   readonly framework = "vue";
@@ -20,14 +20,16 @@ defineOptions({ name: "${componentName}" });
 `;
     return {
       success: true,
-      data: [{
-        path: `${transformed.componentId}/${componentName}.vue`,
-        content,
-        componentId: transformed.componentId,
-        framework: "vue",
-        generated: true,
-        irHash: "",
-      }],
+      data: [
+        {
+          path: `${transformed.componentId}/${componentName}.vue`,
+          content,
+          componentId: transformed.componentId,
+          framework: "vue",
+          generated: true,
+          irHash: "",
+        },
+      ],
     };
   }
 }

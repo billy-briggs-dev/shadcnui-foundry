@@ -1,5 +1,5 @@
-import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 import type { Emitter, TransformedComponent } from "@shadcnui-foundry/core";
+import type { GeneratedFile, PipelineResult } from "@shadcnui-foundry/ir";
 
 export class AngularEmitter implements Emitter {
   readonly framework = "angular";
@@ -28,14 +28,16 @@ export class ${componentName}Component {
 `;
     return {
       success: true,
-      data: [{
-        path: `${transformed.componentId}/${transformed.componentId}.component.ts`,
-        content,
-        componentId: transformed.componentId,
-        framework: "angular",
-        generated: true,
-        irHash: "",
-      }],
+      data: [
+        {
+          path: `${transformed.componentId}/${transformed.componentId}.component.ts`,
+          content,
+          componentId: transformed.componentId,
+          framework: "angular",
+          generated: true,
+          irHash: "",
+        },
+      ],
     };
   }
 }
