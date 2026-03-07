@@ -43,3 +43,6 @@ playwright-report/
 # Generated
 *.generated.ts
 *.generated.js
+
+# Foundry cache
+.foundry/cache/
