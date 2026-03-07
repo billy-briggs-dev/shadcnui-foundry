@@ -1,0 +1,31 @@
+{
+  "name": "@shadcnui-foundry/svelte",
+  "version": "0.0.0",
+  "description": "Svelte component generation target for shadcnui-foundry",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@shadcnui-foundry/core": "workspace:*",
+    "@shadcnui-foundry/ir": "workspace:*"
+  },
+  "devDependencies": {
+    "@shadcnui-foundry/typescript-config": "workspace:*",
+    "@shadcnui-foundry/vitest-config": "workspace:*",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
