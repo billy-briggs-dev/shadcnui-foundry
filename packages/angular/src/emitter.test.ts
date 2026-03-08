@@ -71,4 +71,61 @@ describe("AngularEmitter", () => {
     expect(output.content).toContain('@Input() variant?: "default" | "outline" = "default";');
     expect(output.content).toMatchSnapshot();
   });
+
+  it("emits overlay behavior for dialog with focus and keyboard handling", async () => {
+    const ir: ComponentIR = {
+      id: "dialog",
+      name: "Dialog",
+      description: "A dialog",
+      category: "overlay",
+      props: [],
+      variants: [],
+      a11y: {
+        roles: ["dialog"],
+        requiredAttributes: ["aria-modal"],
+        optionalAttributes: [],
+        keyboardInteractions: [
+          { key: "Escape", description: "Escape closes dialog" },
+          { key: "Tab", description: "Tab traps focus" },
+        ],
+        focusManagement: "trap",
+        liveRegion: false,
+        wcagCriteria: ["2.1.2", "2.4.3"],
+      },
+      dependencies: [],
+      tags: [],
+      provenance: {
+        registry: "test",
+        registryName: "dialog",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+      },
+      generatedAt: "2026-03-07T00:00:00.000Z",
+      irVersion: "1.0.0",
+    };
+
+    const emitter = new AngularEmitter();
+    const result = await emitter.emit({
+      componentId: "dialog",
+      framework: "angular",
+      spec: { ir },
+    });
+
+    expect(result.success).toBe(true);
+    if (!result.success) {
+      return;
+    }
+
+    const output = result.data[0];
+    expect(output).toBeDefined();
+    if (!output) {
+      return;
+    }
+
+    expect(output.content).toContain("implements OnInit, OnDestroy");
+    expect(output.content).toContain(
+      "this.renderer.appendChild(document.body, this.host.nativeElement);",
+    );
+    expect(output.content).toContain('@HostListener("document:keydown", ["$event"])');
+    expect(output.content).toContain('if (event.key === "Escape")');
+  });
 });

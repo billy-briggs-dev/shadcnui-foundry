@@ -11,6 +11,8 @@
     "format": "biome format --write .",
     "check": "biome check --write .",
     "test": "turbo run test",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rimraf node_modules",
     "changeset": "changeset",
@@ -19,6 +21,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@playwright/test": "^1.54.2",
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.27.12",
     "@commitlint/cli": "^19.6.1",

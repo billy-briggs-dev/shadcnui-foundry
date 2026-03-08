@@ -148,11 +148,11 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 
 ### Phase 3 — Interactive Components
 
-- [ ] Dialog, Popover, DropdownMenu, Select (overlay category)
-- [ ] Focus trap integration
-- [ ] Portal rendering strategy per framework
-- [ ] Keyboard navigation tests
-- [ ] Visual regression tests (Playwright)
+- [x] Dialog, Popover, DropdownMenu, Select (overlay category)
+- [x] Focus trap integration
+- [x] Portal rendering strategy per framework
+- [x] Keyboard navigation tests
+- [x] Visual regression tests (Playwright)
 
 ### Phase 4 — Docs, Publishing, Polish
 

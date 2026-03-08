@@ -57,4 +57,42 @@ describe("VueEmitter", () => {
     expect(file.content).toContain('role="button"');
     expect(file.content).toMatchSnapshot();
   });
+
+  it("emits overlay behavior with Teleport and keyboard handling for dialog", async () => {
+    const transformed: TransformedComponent = {
+      componentId: "dialog",
+      framework: "vue",
+      spec: {
+        componentName: "Dialog",
+        propsInterface: [],
+        variants: [],
+        a11y: {
+          roles: ["dialog"],
+          requiredAttributes: ["aria-modal"],
+          optionalAttributes: [],
+        },
+      },
+    };
+
+    const emitter = new VueEmitter();
+    const result = await emitter.emit(transformed);
+
+    expect(result.success).toBe(true);
+    if (!result.success) {
+      return;
+    }
+
+    const file = result.data[0];
+    expect(file).toBeDefined();
+    if (!file) {
+      return;
+    }
+
+    expect(file.content).toContain(
+      'import { computed, onBeforeUnmount, onMounted, ref, useAttrs } from "vue";',
+    );
+    expect(file.content).toContain('<Teleport to="body">');
+    expect(file.content).toContain("function onDocumentKeydown(event: KeyboardEvent): void");
+    expect(file.content).toContain('if (event.key === "Escape")');
+  });
 });

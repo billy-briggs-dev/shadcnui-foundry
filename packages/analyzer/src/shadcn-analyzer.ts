@@ -41,12 +41,12 @@ export class ShadcnAnalyzer implements Analyzer {
       variants,
       a11y: {
         roles: this.inferRoles(raw.name),
-        requiredAttributes: [],
-        optionalAttributes: [],
-        keyboardInteractions: [],
-        focusManagement: "none" as const,
-        liveRegion: false,
-        wcagCriteria: [],
+        requiredAttributes: this.inferRequiredAttributes(raw.name),
+        optionalAttributes: this.inferOptionalAttributes(raw.name),
+        keyboardInteractions: this.inferKeyboardInteractions(raw.name),
+        focusManagement: this.inferFocusManagement(raw.name),
+        liveRegion: this.inferLiveRegion(raw.name),
+        wcagCriteria: this.inferWcagCriteria(raw.name),
       },
       dependencies: raw.registryDependencies ?? [],
       tags: [],
@@ -99,6 +99,109 @@ export class ShadcnAnalyzer implements Analyzer {
       breadcrumb: ["navigation"],
     };
     return roleMap[name] ?? [];
+  }
+
+  private inferRequiredAttributes(name: string): string[] {
+    const requiredMap: Record<string, string[]> = {
+      dialog: ["aria-modal"],
+      "alert-dialog": ["aria-modal"],
+      tooltip: ["aria-describedby"],
+      tabs: ["aria-controls", "aria-selected"],
+      select: ["aria-expanded"],
+      "dropdown-menu": ["aria-expanded"],
+      popover: ["aria-expanded"],
+    };
+
+    return requiredMap[name] ?? [];
+  }
+
+  private inferOptionalAttributes(name: string): string[] {
+    const optionalMap: Record<string, string[]> = {
+      button: ["aria-disabled", "aria-pressed", "aria-expanded"],
+      dialog: ["aria-labelledby", "aria-describedby"],
+      "alert-dialog": ["aria-labelledby", "aria-describedby"],
+      popover: ["aria-controls", "aria-haspopup"],
+      "dropdown-menu": ["aria-controls", "aria-haspopup"],
+      select: ["aria-controls", "aria-labelledby"],
+      tooltip: ["aria-label"],
+    };
+
+    return optionalMap[name] ?? [];
+  }
+
+  private inferKeyboardInteractions(name: string): Array<{ key: string; description: string }> {
+    const keyboardMap: Record<string, Array<{ key: string; description: string }>> = {
+      button: [
+        { key: "Enter", description: "Activate" },
+        { key: "Space", description: "Activate" },
+      ],
+      dialog: [
+        { key: "Escape", description: "Close dialog" },
+        { key: "Tab", description: "Move focus within the dialog" },
+        { key: "Shift+Tab", description: "Move focus backward within the dialog" },
+      ],
+      "alert-dialog": [
+        { key: "Escape", description: "Close dialog" },
+        { key: "Tab", description: "Move focus within the dialog" },
+        { key: "Shift+Tab", description: "Move focus backward within the dialog" },
+      ],
+      popover: [
+        { key: "Escape", description: "Close popover" },
+        { key: "Tab", description: "Move focus through interactive content" },
+      ],
+      "dropdown-menu": [
+        { key: "Enter", description: "Open menu or activate item" },
+        { key: "Space", description: "Open menu or activate item" },
+        { key: "ArrowDown", description: "Move to next menu item" },
+        { key: "ArrowUp", description: "Move to previous menu item" },
+        { key: "Escape", description: "Close menu" },
+      ],
+      select: [
+        { key: "Enter", description: "Open select and choose an option" },
+        { key: "Space", description: "Open select" },
+        { key: "ArrowDown", description: "Move to next option" },
+        { key: "ArrowUp", description: "Move to previous option" },
+        { key: "Escape", description: "Close select" },
+      ],
+      tooltip: [{ key: "Escape", description: "Dismiss tooltip" }],
+    };
+
+    return keyboardMap[name] ?? [];
+  }
+
+  private inferFocusManagement(name: string): "none" | "auto" | "trap" | "restore" {
+    if (name === "dialog" || name === "alert-dialog") {
+      return "trap";
+    }
+
+    if (name === "popover" || name === "dropdown-menu" || name === "select") {
+      return "restore";
+    }
+
+    if (name === "tooltip") {
+      return "auto";
+    }
+
+    return "none";
+  }
+
+  private inferLiveRegion(name: string): boolean {
+    return name === "alert" || name === "alert-dialog";
+  }
+
+  private inferWcagCriteria(name: string): string[] {
+    const wcagMap: Record<string, string[]> = {
+      button: ["2.1.1", "2.4.7", "4.1.2"],
+      dialog: ["2.1.1", "2.4.3", "2.4.7", "4.1.2"],
+      "alert-dialog": ["2.1.1", "2.4.3", "2.4.7", "4.1.2"],
+      popover: ["2.1.1", "2.4.3", "4.1.2"],
+      "dropdown-menu": ["2.1.1", "2.4.3", "4.1.2"],
+      select: ["1.3.1", "2.1.1", "4.1.2"],
+      tabs: ["2.1.1", "2.4.3", "4.1.2"],
+      tooltip: ["1.4.13", "2.1.1", "4.1.2"],
+    };
+
+    return wcagMap[name] ?? [];
   }
 
   private collectSource(files: RegistryFile[] | undefined): string {

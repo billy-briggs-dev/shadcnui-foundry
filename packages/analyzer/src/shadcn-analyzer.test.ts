@@ -252,4 +252,70 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     expect(analyzed).toMatchSnapshot();
   });
+
+  it("infers interactive accessibility metadata for overlay and select components", async () => {
+    const analyzer = new ShadcnAnalyzer();
+
+    const dialogResult = expectSuccess(
+      await analyzer.analyze({
+        name: "dialog",
+        contentType: "json",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+        content: {
+          name: "dialog",
+          type: "registry:ui",
+        },
+      }),
+    );
+
+    const dropdownResult = expectSuccess(
+      await analyzer.analyze({
+        name: "dropdown-menu",
+        contentType: "json",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+        content: {
+          name: "dropdown-menu",
+          type: "registry:ui",
+        },
+      }),
+    );
+
+    const selectResult = expectSuccess(
+      await analyzer.analyze({
+        name: "select",
+        contentType: "json",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+        content: {
+          name: "select",
+          type: "registry:ui",
+        },
+      }),
+    );
+
+    expect(dialogResult.a11y.focusManagement).toBe("trap");
+    expect(dialogResult.a11y.requiredAttributes).toContain("aria-modal");
+    expect(dialogResult.a11y.keyboardInteractions).toEqual(
+      expect.arrayContaining([
+        { key: "Escape", description: "Close dialog" },
+        { key: "Tab", description: "Move focus within the dialog" },
+      ]),
+    );
+
+    expect(dropdownResult.a11y.focusManagement).toBe("restore");
+    expect(dropdownResult.a11y.keyboardInteractions).toEqual(
+      expect.arrayContaining([
+        { key: "ArrowDown", description: "Move to next menu item" },
+        { key: "Escape", description: "Close menu" },
+      ]),
+    );
+
+    expect(selectResult.a11y.roles).toEqual(["listbox"]);
+    expect(selectResult.a11y.keyboardInteractions).toEqual(
+      expect.arrayContaining([
+        { key: "Enter", description: "Open select and choose an option" },
+        { key: "ArrowUp", description: "Move to previous option" },
+      ]),
+    );
+    expect(selectResult.a11y.wcagCriteria).toContain("4.1.2");
+  });
 });

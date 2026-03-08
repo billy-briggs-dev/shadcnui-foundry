@@ -127,14 +127,21 @@ function handleClick(event: MouseEvent): void {
   }
 
   let props: Props = $props();
-  let className = $derived(["button", props.class].filter(Boolean).join(" "));
+  const defaultProps = {
+  disabled: false,
+  size: "default",
+  variant: "default",
+  } as const;
+
+  let propsWithDefaults = $derived({ ...defaultProps, ...props });
+  let className = $derived(["button", propsWithDefaults.class].filter(Boolean).join(" "));
 </script>
 
 <button
   role="button"
-  data-variant={props.variant}
-  data-size={props.size}
-  {aria-disabled}={props["aria-disabled"]}
+  data-variant={propsWithDefaults.variant}
+  data-size={propsWithDefaults.size}
+  {aria-disabled}={propsWithDefaults["aria-disabled"]}
   class={className}
 >
   <slot />
@@ -325,11 +332,17 @@ function handleClick(event: MouseEvent): void {
   }
 
   let props: Props = $props();
-  let className = $derived(["card", props.class].filter(Boolean).join(" "));
+  const defaultProps = {
+  elevated: false,
+  tone: "default",
+  } as const;
+
+  let propsWithDefaults = $derived({ ...defaultProps, ...props });
+  let className = $derived(["card", propsWithDefaults.class].filter(Boolean).join(" "));
 </script>
 
 <div
-  data-tone={props.tone}
+  data-tone={propsWithDefaults.tone}
 
   class={className}
 >
@@ -520,13 +533,19 @@ function handleClick(event: MouseEvent): void {
   }
 
   let props: Props = $props();
-  let className = $derived(["input", props.class].filter(Boolean).join(" "));
+  const defaultProps = {
+  disabled: false,
+  placeholder: "",
+  } as const;
+
+  let propsWithDefaults = $derived({ ...defaultProps, ...props });
+  let className = $derived(["input", propsWithDefaults.class].filter(Boolean).join(" "));
 </script>
 
 <input
   role="textbox"
 
-  {aria-disabled}={props["aria-disabled"]}
+  {aria-disabled}={propsWithDefaults["aria-disabled"]}
   class={className}
 >
   <slot />

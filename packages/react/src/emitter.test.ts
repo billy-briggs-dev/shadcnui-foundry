@@ -55,4 +55,41 @@ describe("ReactEmitter", () => {
     expect(file.content).toContain("aria-disabled?: string;");
     expect(file.content).toMatchSnapshot();
   });
+
+  it("emits overlay behavior with portal and keyboard handling for dialog", async () => {
+    const transformed: TransformedComponent = {
+      componentId: "dialog",
+      framework: "react",
+      spec: {
+        componentName: "Dialog",
+        propsInterface: [],
+        variants: [],
+        a11y: {
+          roles: ["dialog"],
+          requiredAttributes: ["aria-modal"],
+          optionalAttributes: [],
+        },
+      },
+    };
+
+    const emitter = new ReactEmitter();
+    const result = await emitter.emit(transformed);
+
+    expect(result.success).toBe(true);
+    if (!result.success) {
+      return;
+    }
+
+    const file = result.data[0];
+    expect(file).toBeDefined();
+    if (!file) {
+      return;
+    }
+
+    expect(file.content).toContain('import { createPortal } from "react-dom";');
+    expect(file.content).toContain("const [open, setOpen] = React.useState(false);");
+    expect(file.content).toContain('event.key === "Escape"');
+    expect(file.content).toContain('document.addEventListener("keydown", trapFocus)');
+    expect(file.content).toContain("return createPortal(overlayContent, document.body);");
+  });
 });
