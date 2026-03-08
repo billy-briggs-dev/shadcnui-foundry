@@ -1,5 +1,5 @@
 /** @type {import('@storybook/html').Preview} */
-module.exports = {
+const preview = {
   parameters: {
     layout: "fullscreen",
     controls: {
@@ -7,3 +7,5 @@ module.exports = {
     },
   },
 };
+
+export default preview;

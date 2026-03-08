@@ -1,3 +1,4 @@
+import * as React from "react";
 import buttonSource from "@generated/react/button/Button.tsx?raw";
 import cardSource from "@generated/react/card/Card.tsx?raw";
 import inputSource from "@generated/react/input/Input.tsx?raw";
