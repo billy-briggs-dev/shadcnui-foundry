@@ -79,11 +79,11 @@ pnpm check
 ### CLI Usage
 
 ```bash
-# Default flow: prepare per-component agent handoff bundles for all frameworks
-pnpm --filter @shadcnui-foundry/cli run foundry -- accordion
+# Default flow: prepare per-component agent job bundles for all frameworks
+pnpm --filter @shadcnui-foundry/cli run foundry accordion
 
-# Explicit handoff command (alias: agent-handoff)
-pnpm --filter @shadcnui-foundry/cli run foundry -- handoff accordion --framework react
+# Explicit single-job command
+pnpm --filter @shadcnui-foundry/cli run foundry jobs-create accordion --framework react
 ```
 
 ## Tooling Choices

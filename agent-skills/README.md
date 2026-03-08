@@ -14,5 +14,4 @@ Available skills:
 - `storybook-playground-parity`
 - `safe-generated-file-updates`
 - `framework-parity-checks`
-- `handoff-all-frameworks`
 - `run-agent-jobs`

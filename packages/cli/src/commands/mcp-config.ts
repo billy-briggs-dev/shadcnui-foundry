@@ -3,6 +3,7 @@ import { dirname, join, parse } from "node:path";
 
 const FALLBACK_BASE_URL = "https://ui.shadcn.com/r/styles/new-york";
 const LEGACY_FALLBACK_BASE_URL = "https://ui.shadcn.com/r/styles/default";
+const BASE_UI_FALLBACK_BASE_URL = "https://base-ui.com/react/components/";
 
 type McpServerConfig = {
   type?: string;
@@ -82,6 +83,11 @@ export function resolveRegistryBaseUrls(cliBaseUrl: string | undefined): string[
   }
 
   const preferred = resolveRegistryBaseUrl(undefined);
-  const unique = new Set<string>([preferred, FALLBACK_BASE_URL, LEGACY_FALLBACK_BASE_URL]);
+  const unique = new Set<string>([
+    preferred,
+    FALLBACK_BASE_URL,
+    BASE_UI_FALLBACK_BASE_URL,
+    LEGACY_FALLBACK_BASE_URL,
+  ]);
   return [...unique];
 }

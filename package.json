@@ -13,7 +13,7 @@
     "test": "turbo run test",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
-    "handoff:all": "node ./scripts/handoff-all-frameworks.mjs",
+    "jobs:all": "node ./scripts/jobs-all-frameworks.mjs",
     "parity:scorecard": "node ./scripts/parity-scorecard.mjs",
     "typecheck": "turbo run typecheck",
     "clean:foundry": "pnpm --filter @shadcnui-foundry/cli build && pnpm --filter @shadcnui-foundry/cli run foundry -- clean",

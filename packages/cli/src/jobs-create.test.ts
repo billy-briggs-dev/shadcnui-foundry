@@ -4,7 +4,7 @@ import { join } from "node:path";
 import type { RawRegistryArtifact } from "@shadcnui-foundry/core";
 import { ShadcnRegistryItemSchema } from "@shadcnui-foundry/registry-ingest";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { runAgentHandoff } from "./commands/agent-handoff.js";
+import { runJobsCreate } from "./commands/jobs-create.js";
 
 const cleanupDirs: string[] = [];
 
@@ -48,7 +48,7 @@ vi.mock("@shadcnui-foundry/analyzer", () => {
         data: {
           id: artifact.name,
           name: "Accordion",
-          description: "Mock IR for testing handoff snapshots",
+          description: "Mock IR for testing job snapshots",
           category: "composite" as const,
           props: [
             {
@@ -107,12 +107,12 @@ function normalizePrompt(content: string): string {
     .replace(/`[^`]*ir\.json`/g, "`<IR_PATH>`");
 }
 
-describe("agent handoff bundle", () => {
+describe("agent job bundle", () => {
   it("snapshots IR + prompt and validates artifact contract", async () => {
-    const tmpRoot = mkdtempSync(join(tmpdir(), "foundry-handoff-"));
+    const tmpRoot = mkdtempSync(join(tmpdir(), "foundry-jobs-"));
     cleanupDirs.push(tmpRoot);
 
-    const result = await runAgentHandoff("accordion", {
+    const result = await runJobsCreate("accordion", {
       framework: "react",
       cacheDir: ".foundry/cache",
       outDir: tmpRoot,

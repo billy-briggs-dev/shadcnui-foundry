@@ -58,7 +58,7 @@ function parseArgs(argv) {
 
 function showUsage() {
   console.error(
-    "Usage: pnpm handoff:all <component> [--offline] [--cache-dir <dir>] [--base-url <url>] [--force] [--no-shared-cache]",
+    "Usage: pnpm jobs:all <component> [--offline] [--cache-dir <dir>] [--base-url <url>] [--force] [--no-shared-cache]",
   );
 }
 
@@ -79,14 +79,13 @@ if (!pnpmExecPath) {
   process.exit(1);
 }
 
-function runHandoff(framework, outDir, extraArgs = []) {
+function runJobsCreate(framework, outDir, extraArgs = []) {
   const args = [
     "--filter",
     "@shadcnui-foundry/cli",
     "run",
     "foundry",
-    "--",
-    "handoff",
+    "jobs-create",
     options.component,
     "--framework",
     framework,
@@ -125,7 +124,7 @@ if (options.sharedCache) {
     console.log(`\n=== shared cache: ${options.component} [cache hit: skipped] ===`);
   } else {
     console.log(`\n=== shared cache: ${options.component} [generating] ===`);
-    runHandoff("react", SHARED_OUT_DIR);
+    runJobsCreate("react", SHARED_OUT_DIR);
     sharedGenerated = true;
   }
 }
@@ -139,21 +138,21 @@ for (const framework of FRAMEWORKS) {
 
   if (hasBundle && !options.force) {
     skippedCount += 1;
-    console.log(`\n=== handoff: ${options.component} (${framework}) [cache hit: skipped] ===`);
+    console.log(`\n=== jobs-create: ${options.component} (${framework}) [cache hit: skipped] ===`);
     continue;
   }
 
-  console.log(`\n=== handoff: ${options.component} (${framework}) ===`);
+  console.log(`\n=== jobs-create: ${options.component} (${framework}) ===`);
 
   if (options.sharedCache) {
-    runHandoff(framework, `.foundry/agent-jobs/${framework}`, ["--shared-input-dir", SHARED_OUT_DIR]);
+    runJobsCreate(framework, `.foundry/agent-jobs/${framework}`, ["--shared-input-dir", SHARED_OUT_DIR]);
   } else {
-    runHandoff(framework, `.foundry/agent-jobs/${framework}`);
+    runJobsCreate(framework, `.foundry/agent-jobs/${framework}`);
   }
 
   generatedCount += 1;
 }
 
 console.log(
-  `\nAll framework handoff bundles processed successfully. Generated: ${generatedCount}, skipped (cache hit): ${skippedCount}, shared cache generated: ${sharedGenerated}.`,
+  `\nAll framework job bundles processed successfully. Generated: ${generatedCount}, skipped (cache hit): ${skippedCount}, shared cache generated: ${sharedGenerated}.`,
 );

@@ -1,14 +1,14 @@
 # shadcnui-foundry Workflow
 
-This project now uses a prompt-first handoff model.
+This project now uses a prompt-first job bundle model.
 
 ## End-to-End Flow
 
 ```mermaid
 flowchart LR
-    A[shadcn/ui Registry] --> B[Ingest<br/>internal to handoff]
+    A[shadcn/ui Registry] --> B[Ingest<br/>internal to job preparation]
     B --> C[Analyze<br/>Raw Artifact -> ComponentIR]
-    C --> D[Agent Handoff Bundle]
+    C --> D[Agent Job Bundle]
 
     D --> E1[artifact.json]
     D --> E2[ir.json]
@@ -22,20 +22,20 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    S[Start] --> H[Create Handoff<br/>foundry &lt;component&gt;]
+    S[Start] --> H[Create Jobs<br/>foundry &lt;component&gt;]
     H --> O[Output Bundle<br/>.foundry/agent-jobs/&lt;component&gt;/]
     O --> A[Use prompt.md + ir.json + artifact.json<br/>with an implementation agent]
 ```
 
 ## Practical Notes
 
-- Default command is handoff: `foundry <component>`
-- Explicit command is available: `foundry handoff <component>`
+- Default command creates framework job bundles: `foundry <component>`
+- Explicit command is available: `foundry jobs-create <component>`
 - The CLI does not perform downstream framework translation in this mode.
 
 ## Typical Run
 
 ```bash
-pnpm --filter @shadcnui-foundry/cli run foundry -- accordion
-pnpm --filter @shadcnui-foundry/cli run foundry -- handoff accordion --framework angular
+pnpm --filter @shadcnui-foundry/cli run foundry accordion
+pnpm --filter @shadcnui-foundry/cli run foundry jobs-create accordion --framework angular
 ```

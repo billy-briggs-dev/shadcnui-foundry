@@ -1,6 +1,6 @@
 ---
 name: component-generation-flow
-description: Execute the canonical prompt-first handoff workflow for shadcnui-foundry components. Use when preparing per-framework agent jobs from registry artifacts and IR.
+description: Execute the canonical prompt-first job-bundle workflow for shadcnui-foundry components. Use when preparing per-framework agent jobs from registry artifacts and IR.
 compatibility: Requires built CLI and registry access (or offline cache).
 metadata:
   owner: shadcnui-foundry
@@ -10,15 +10,15 @@ metadata:
 # Component Generation Flow
 
 ## When to use this skill
-Use this skill when the user asks to create component handoff bundles for one or all frameworks.
+Use this skill when the user asks to create component job bundles for one or all frameworks.
 
 ## Steps
 1. Build the CLI package:
    - `pnpm --filter @shadcnui-foundry/cli build`
-2. Create handoff bundles for all frameworks (default behavior):
-   - `pnpm --filter @shadcnui-foundry/cli run foundry -- <component>`
-3. Optional explicit single-framework handoff:
-   - `pnpm --filter @shadcnui-foundry/cli run foundry -- handoff <component> --framework <react|vue|svelte|angular|lit>`
+2. Create job bundles for all frameworks (default behavior):
+   - `pnpm --filter @shadcnui-foundry/cli run foundry <component>`
+3. Optional explicit single-framework job creation:
+   - `pnpm --filter @shadcnui-foundry/cli run foundry jobs-create <component> --framework <react|vue|svelte|angular|lit>`
 4. Inspect generated jobs:
    - `pnpm --filter @shadcnui-foundry/cli run foundry -- jobs <component>`
 5. Confirm bundle outputs exist for each target framework:
@@ -44,5 +44,5 @@ Use this skill when the user asks to create component handoff bundles for one or
 
 ## Validation
 - For CLI changes, run:
-  - `pnpm --filter @shadcnui-foundry/cli test -- agent-handoff.test.ts`
+   - `pnpm --filter @shadcnui-foundry/cli test -- jobs-create.test.ts`
 - For downstream framework implementation changes, run targeted package tests and parity checks.

@@ -41,9 +41,9 @@
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {
-      "label": "foundry handoff (prompt)",
+      "label": "foundry jobs-create (prompt)",
       "type": "shell",
-      "command": "pnpm --filter @shadcnui-foundry/cli run foundry -- handoff ${input:componentName} --framework ${input:frameworkName} --out-dir .foundry/agent-jobs/${input:frameworkName}",
+      "command": "pnpm --filter @shadcnui-foundry/cli run foundry jobs-create ${input:componentName} --framework ${input:frameworkName} --out-dir .foundry/agent-jobs/${input:frameworkName}",
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {

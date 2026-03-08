@@ -15,9 +15,9 @@ import { ShadcnRegistryIngester } from "@shadcnui-foundry/registry-ingest";
 import { Command } from "commander";
 import { resolveRegistryBaseUrls } from "./mcp-config.js";
 
-const logger = createLogger("CLI:agent-handoff");
+const logger = createLogger("CLI:jobs-create");
 
-type AgentHandoffOptions = {
+type JobsCreateOptions = {
   offline?: boolean;
   cacheDir: string;
   baseUrl?: string;
@@ -26,9 +26,9 @@ type AgentHandoffOptions = {
   sharedInputDir?: string;
 };
 
-export type AgentHandoffRunOptions = AgentHandoffOptions;
+export type JobsCreateRunOptions = JobsCreateOptions;
 
-export type AgentHandoffBundle = {
+export type JobsCreateBundle = {
   status: "ready";
   component: string;
   framework: string;
@@ -141,7 +141,7 @@ function linkOrCopySharedFile(sourcePath: string, destinationPath: string): bool
 
 async function ingestWithFallback(
   component: string,
-  options: Pick<AgentHandoffOptions, "cacheDir" | "offline" | "baseUrl">,
+  options: Pick<JobsCreateOptions, "cacheDir" | "offline" | "baseUrl">,
 ): Promise<PipelineResult<RawRegistryArtifact>> {
   const baseUrls = resolveRegistryBaseUrls(options.baseUrl);
 
@@ -194,11 +194,11 @@ function toPrompt(
   irPath: string,
   artifactPath: string,
 ): string {
-  return `# Agent Handoff: ${component}
+  return `# Agent Job: ${component}
 
 You are implementing one framework-specific component as a reusable shared-library export.
 
-This handoff expects concrete, importable component code under the framework package, not string-based generators.
+This job expects concrete, importable component code under the framework package, not string-based generators.
 
 ## Inputs
 
@@ -256,14 +256,13 @@ This handoff expects concrete, importable component code under the framework pac
 }
 
 /**
- * foundry agent-handoff <component>
+ * foundry jobs-create <component>
  *
  * Creates per-component files (artifact, IR, prompt) for agent-driven implementation.
  */
-export function agentHandoffCommand(): Command {
-  return new Command("handoff")
-    .alias("agent-handoff")
-    .description("Create an agent handoff bundle for a single component")
+export function jobsCreateCommand(): Command {
+  return new Command("jobs-create")
+    .description("Create an agent job bundle for a single component")
     .argument("<component>", "Component name (e.g. accordion, dialog)")
     .option("-f, --framework <name>", "Target framework package", "react")
     .option("--offline", "Use cached artifacts only")
@@ -271,8 +270,8 @@ export function agentHandoffCommand(): Command {
     .option("--base-url <url>", "Registry base URL (overrides MCP config)")
     .option("--out-dir <dir>", "Output directory", ".foundry/agent-jobs")
     .option("--shared-input-dir <dir>", "Read artifact/IR from shared cache at <dir>/<component>")
-    .action(async (component: string, options: AgentHandoffRunOptions) => {
-      const result = await runAgentHandoff(component, options);
+    .action(async (component: string, options: JobsCreateRunOptions) => {
+      const result = await runJobsCreate(component, options);
 
       if (!result.success) {
         logErrors(result.errors);
@@ -289,10 +288,10 @@ function logErrors(errors: PipelineError[]): void {
   }
 }
 
-export async function runAgentHandoff(
+export async function runJobsCreate(
   component: string,
-  options: AgentHandoffRunOptions,
-): Promise<PipelineResult<AgentHandoffBundle>> {
+  options: JobsCreateRunOptions,
+): Promise<PipelineResult<JobsCreateBundle>> {
   const runDir = resolve(process.cwd(), options.outDir, component);
   const artifactPath = resolve(runDir, "artifact.json");
   const irPath = resolve(runDir, "ir.json");
@@ -344,7 +343,7 @@ export async function runAgentHandoff(
   const prompt = toPrompt(component, options.framework, irPath, artifactPath);
   const promptWritten = writeFileIfChanged(promptPath, `${prompt}\n`);
 
-  logger.info("Handoff bundle write status", {
+  logger.info("Job bundle write status", {
     component,
     framework: options.framework,
     artifactWritten,

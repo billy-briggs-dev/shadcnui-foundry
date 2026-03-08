@@ -1,7 +1,7 @@
 ---
 name: run-agent-jobs
-description: Execute framework-specific implementation jobs from handoff bundles (`prompt.md`, `ir.json`, `artifact.json`) and validate outputs package-by-package.
-compatibility: Requires existing handoff bundles under `packages/cli/.foundry/agent-jobs/<framework>/<component>/`.
+description: Execute framework-specific implementation jobs from job bundles (`prompt.md`, `ir.json`, `artifact.json`) and validate outputs package-by-package.
+compatibility: Requires existing job bundles under `packages/cli/.foundry/agent-jobs/<framework>/<component>/`.
 metadata:
   owner: shadcnui-foundry
   version: "1.0"
@@ -10,7 +10,7 @@ metadata:
 # Run Agent Jobs
 
 ## When to use this skill
-Use this skill after handoff bundles are generated and you want to implement component outputs with an agent in a controlled, repeatable loop.
+Use this skill after job bundles are generated and you want to implement component outputs with an agent in a controlled, repeatable loop.
 
 ## Prerequisite
 
@@ -68,7 +68,7 @@ For each framework job (`react`, `vue`, `svelte`, `angular`, `lit`):
 - Resume mode: continue only failed frameworks from a previous batch.
 
 ## Safety checks
-- Do not edit handoff bundle files manually.
+- Do not edit job bundle files manually.
 - Treat `ir.json` as canonical when prompt and implementation differ.
 - Keep changes framework-scoped; avoid unrelated file edits.
 - If one framework fails validation, stop and fix before continuing.

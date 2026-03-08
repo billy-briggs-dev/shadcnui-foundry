@@ -15,8 +15,8 @@ export function runFoundryClean(targets: readonly string[] = DEFAULT_TARGETS): v
 }
 
 export function cleanCommand(): Command {
-  return new Command("clean").description("Clean Foundry caches and handoff bundles").action(() => {
+  return new Command("clean").description("Clean Foundry caches and job bundles").action(() => {
     runFoundryClean();
-    process.stdout.write("Cleaned Foundry caches and handoff bundles.\n");
+    process.stdout.write("Cleaned Foundry caches and job bundles.\n");
   });
 }

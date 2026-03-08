@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`agent handoff bundle > snapshots IR + prompt and validates artifact contract 1`] = `
+exports[`agent job bundle > snapshots IR + prompt and validates artifact contract 1`] = `
 {
   "a11y": {
     "focusManagement": "none",
@@ -17,7 +17,7 @@ exports[`agent handoff bundle > snapshots IR + prompt and validates artifact con
   },
   "category": "composite",
   "dependencies": [],
-  "description": "Mock IR for testing handoff snapshots",
+  "description": "Mock IR for testing job snapshots",
   "generatedAt": "2026-03-07T00:00:00.000Z",
   "id": "accordion",
   "irVersion": "1.0.0",
@@ -58,12 +58,12 @@ exports[`agent handoff bundle > snapshots IR + prompt and validates artifact con
 }
 `;
 
-exports[`agent handoff bundle > snapshots IR + prompt and validates artifact contract 2`] = `
-"# Agent Handoff: accordion
+exports[`agent job bundle > snapshots IR + prompt and validates artifact contract 2`] = `
+"# Agent Job: accordion
 
 You are implementing one framework-specific component as a reusable shared-library export.
 
-This handoff expects concrete, importable component code under the framework package, not string-based generators.
+This job expects concrete, importable component code under the framework package, not string-based generators.
 
 ## Inputs
 
