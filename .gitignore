@@ -46,7 +46,7 @@ playwright-report/
 **/generated/**
 
 # Foundry cache
-.foundry/cache/
+**/.foundry/cache/
 **/.foundry/agent-jobs/
 **/.foundry/cache-*/
 
