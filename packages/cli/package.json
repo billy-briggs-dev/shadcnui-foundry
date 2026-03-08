@@ -24,9 +24,16 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@shadcnui-foundry/a11y-rules": "workspace:*",
+    "@shadcnui-foundry/analyzer": "workspace:*",
+    "@shadcnui-foundry/angular": "workspace:*",
     "@shadcnui-foundry/core": "workspace:*",
     "@shadcnui-foundry/ir": "workspace:*",
+    "@shadcnui-foundry/lit": "workspace:*",
+    "@shadcnui-foundry/react": "workspace:*",
     "@shadcnui-foundry/registry-ingest": "workspace:*",
+    "@shadcnui-foundry/svelte": "workspace:*",
+    "@shadcnui-foundry/vue": "workspace:*",
     "commander": "^12.1.0",
     "zod": "^3.24.1"
   },

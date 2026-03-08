@@ -4,6 +4,7 @@
  * @description Entry point for the foundry CLI.
  */
 import { Command } from "commander";
+import { generateAllCommand } from "../commands/generate-all.js";
 import { generateCommand } from "../commands/generate.js";
 import { ingestCommand } from "../commands/ingest.js";
 import { listCommand } from "../commands/list.js";
@@ -17,6 +18,7 @@ program
 
 program.addCommand(ingestCommand());
 program.addCommand(generateCommand());
+program.addCommand(generateAllCommand());
 program.addCommand(listCommand());
 
 program.parseAsync(process.argv).catch((err: unknown) => {

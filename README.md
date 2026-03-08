@@ -130,21 +130,21 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 
 ### Phase 1 — IR + Ingest Pipeline
 
-- [ ] Full prop extraction from TS source files in registry artifacts
-- [ ] cva (class-variance-authority) variant parsing
-- [ ] Complete shadcn/ui component catalog analysis
-- [ ] MCP integration for live registry data
-- [ ] IR snapshot tests for all components
+- [x] Full prop extraction from TS source files in registry artifacts
+- [x] cva (class-variance-authority) variant parsing
+- [x] Complete shadcn/ui component catalog analysis
+- [x] MCP integration for live registry data
+- [x] IR snapshot tests for all components
 - [ ] Storybook integration (apps/playground-react)
 
 ### Phase 2 — Framework Packages (Button, Input, Card)
 
-- [ ] ReactEmitter: full TSX with forwarded refs, variants, a11y attributes
-- [ ] VueEmitter: SFC with defineProps, defineEmits, useAttrs
-- [ ] SvelteEmitter: Svelte 5 runes syntax
-- [ ] AngularEmitter: standalone components with @Input
-- [ ] LitEmitter: LitElement with reactive properties
-- [ ] Cross-framework snapshot tests for Button, Input, Card
+- [x] ReactEmitter: full TSX with forwarded refs, variants, a11y attributes
+- [x] VueEmitter: SFC with defineProps, defineEmits, useAttrs
+- [x] SvelteEmitter: Svelte 5 runes syntax
+- [x] AngularEmitter: standalone components with @Input
+- [x] LitEmitter: LitElement with reactive properties
+- [x] Cross-framework snapshot tests for Button, Input, Card
 
 ### Phase 3 — Interactive Components
 

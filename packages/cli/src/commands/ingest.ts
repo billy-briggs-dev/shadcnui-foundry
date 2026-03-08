@@ -1,6 +1,7 @@
 import { createLogger } from "@shadcnui-foundry/core";
 import { ShadcnRegistryIngester } from "@shadcnui-foundry/registry-ingest";
 import { Command } from "commander";
+import { resolveRegistryBaseUrls } from "./mcp-config.js";
 
 const logger = createLogger("CLI:ingest");
 
@@ -15,32 +16,49 @@ export function ingestCommand(): Command {
     .argument("<component>", "Component name to ingest (e.g. button, dialog)")
     .option("--offline", "Use cached artifacts only, do not make network requests")
     .option("--cache-dir <dir>", "Cache directory", ".foundry/cache")
-    .option("--base-url <url>", "Registry base URL", "https://ui.shadcn.com/registry")
+    .option("--base-url <url>", "Registry base URL (overrides MCP config)")
     .action(
       async (
         component: string,
-        options: { offline?: boolean; cacheDir: string; baseUrl: string },
+        options: { offline?: boolean; cacheDir: string; baseUrl?: string },
       ) => {
-        logger.info("Starting ingestion", { component });
+        const baseUrls = resolveRegistryBaseUrls(options.baseUrl);
+        logger.info("Starting ingestion", { component, baseUrls });
 
-        const ingester = new ShadcnRegistryIngester({
-          ...(options.offline !== undefined && { offlineMode: options.offline }),
-          cacheDir: options.cacheDir,
-          baseUrl: options.baseUrl,
-        });
-
-        const result = await ingester.ingest(component);
-
-        if (!result.success) {
-          for (const error of result.errors) {
-            logger.error(error.message, { code: error.code });
+        for (let index = 0; index < baseUrls.length; index += 1) {
+          const baseUrl = baseUrls[index];
+          if (!baseUrl) {
+            continue;
           }
-          process.exit(1);
+
+          const ingester = new ShadcnRegistryIngester({
+            ...(options.offline !== undefined && { offlineMode: options.offline }),
+            cacheDir: options.cacheDir,
+            baseUrl,
+          });
+
+          const result = await ingester.ingest(component);
+          if (result.success) {
+            process.stdout.write(`${JSON.stringify(result.data, null, 2)}\n`);
+            logger.info("Ingestion complete", { component, baseUrl });
+            return;
+          }
+
+          for (const error of result.errors) {
+            logger.error(error.message, { code: error.code, baseUrl });
+          }
+
+          const hasNext = index < baseUrls.length - 1;
+          if (hasNext) {
+            logger.warn("Ingestion failed on endpoint, trying fallback", {
+              component,
+              failedBaseUrl: baseUrl,
+              nextBaseUrl: baseUrls[index + 1] ?? null,
+            });
+          }
         }
 
-        process.stdout.write(`${JSON.stringify(result.data, null, 2)}\n`);
-
-        logger.info("Ingestion complete", { component });
+        process.exit(1);
       },
     );
 }

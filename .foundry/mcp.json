@@ -5,7 +5,7 @@
   "servers": {
     "shadcn-registry": {
       "type": "http",
-      "baseUrl": "https://ui.shadcn.com/registry",
+      "baseUrl": "https://www.shadcn.io/api/mcp",
       "description": "shadcn/ui public registry API",
       "enabled": true,
       "cacheDir": ".foundry/cache",

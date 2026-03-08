@@ -1,75 +1,8 @@
 {
-  // Format on save using Biome
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "biomejs.biome",
-  "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+  "terminal.integrated.env.windows": {
+    "PATH": "${env:APPDATA}\\npm;${env:PATH}"
   },
-  // TypeScript
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.preferences.importModuleSpecifier": "relative",
-  // Language-specific formatters
-  "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "davidanson.vscode-markdownlint",
-    "editor.wordWrap": "on"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  // Vitest
-  "vitest.enable": true,
-  "vitest.workspaceConfig": "./vitest.workspace.ts",
-  // Spell check
-  "cSpell.words": [
-    "shadcn",
-    "shadcnui",
-    "foundry",
-    "turbo",
-    "turborepo",
-    "biome",
-    "tsup",
-    "pnpm",
-    "changesets",
-    "monorepo",
-    "vitest",
-    "ingest",
-    "ingester",
-    "emitter",
-    "provenance",
-    "wcag",
-    "aria",
-    "zod",
-    "unbuild"
-  ],
-  // Explorer
-  "explorer.fileNesting.enabled": true,
-  "explorer.fileNesting.patterns": {
-    "package.json": "pnpm-lock.yaml, .npmrc, .nvmrc",
-    "tsconfig.json": "tsconfig.*.json",
-    "biome.json": ".editorconfig, .lintstagedrc.json",
-    "turbo.json": "turbo.json"
-  },
-  // Hide build artifacts
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/dist": false,
-    "**/.turbo": true
-  }
+  "vitest.maximumConfigs": 20,
+  "vitest.nodeExecutable": "node",
+  "vitest.shellType": "terminal"
 }

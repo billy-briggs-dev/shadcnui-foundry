@@ -1,0 +1,428 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ShadcnAnalyzer > extracts props and cva variants from source files 1`] = `
+{
+  "category": "primitive",
+  "id": "button",
+  "props": [
+    {
+      "defaultValue": "false",
+      "name": "asChild",
+      "required": false,
+      "type": "boolean",
+    },
+    {
+      "defaultValue": ""default"",
+      "name": "size",
+      "required": false,
+      "type": "enum",
+      "values": [
+        "default",
+        "sm",
+      ],
+    },
+    {
+      "defaultValue": ""default"",
+      "name": "variant",
+      "required": false,
+      "type": "enum",
+      "values": [
+        "default",
+        "outline",
+      ],
+    },
+  ],
+  "roles": [
+    "button",
+  ],
+  "variants": [
+    {
+      "defaultValue": "default",
+      "name": "size",
+      "strategy": "class",
+      "values": [
+        "default",
+        "sm",
+      ],
+    },
+    {
+      "defaultValue": "default",
+      "name": "variant",
+      "strategy": "class",
+      "values": [
+        "default",
+        "outline",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`ShadcnAnalyzer > generates a catalog analysis snapshot for all known registry component names 1`] = `
+[
+  {
+    "category": "composite",
+    "id": "accordion",
+    "name": "Accordion",
+    "roles": [],
+  },
+  {
+    "category": "feedback",
+    "id": "alert",
+    "name": "Alert",
+    "roles": [
+      "alert",
+    ],
+  },
+  {
+    "category": "overlay",
+    "id": "alert-dialog",
+    "name": "Alert Dialog",
+    "roles": [
+      "alertdialog",
+    ],
+  },
+  {
+    "category": "layout",
+    "id": "aspect-ratio",
+    "name": "Aspect Ratio",
+    "roles": [],
+  },
+  {
+    "category": "data-display",
+    "id": "avatar",
+    "name": "Avatar",
+    "roles": [],
+  },
+  {
+    "category": "data-display",
+    "id": "badge",
+    "name": "Badge",
+    "roles": [],
+  },
+  {
+    "category": "navigation",
+    "id": "breadcrumb",
+    "name": "Breadcrumb",
+    "roles": [
+      "navigation",
+    ],
+  },
+  {
+    "category": "primitive",
+    "id": "button",
+    "name": "Button",
+    "roles": [
+      "button",
+    ],
+  },
+  {
+    "category": "primitive",
+    "id": "button-group",
+    "name": "Button Group",
+    "roles": [],
+  },
+  {
+    "category": "data-display",
+    "id": "calendar",
+    "name": "Calendar",
+    "roles": [],
+  },
+  {
+    "category": "layout",
+    "id": "card",
+    "name": "Card",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "carousel",
+    "name": "Carousel",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "chart",
+    "name": "Chart",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "checkbox",
+    "name": "Checkbox",
+    "roles": [
+      "checkbox",
+    ],
+  },
+  {
+    "category": "composite",
+    "id": "collapsible",
+    "name": "Collapsible",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "combobox",
+    "name": "Combobox",
+    "roles": [],
+  },
+  {
+    "category": "navigation",
+    "id": "command",
+    "name": "Command",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "context-menu",
+    "name": "Context Menu",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "dialog",
+    "name": "Dialog",
+    "roles": [
+      "dialog",
+    ],
+  },
+  {
+    "category": "primitive",
+    "id": "direction",
+    "name": "Direction",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "drawer",
+    "name": "Drawer",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "dropdown-menu",
+    "name": "Dropdown Menu",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "empty",
+    "name": "Empty",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "field",
+    "name": "Field",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "form",
+    "name": "Form",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "hover-card",
+    "name": "Hover Card",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "input",
+    "name": "Input",
+    "roles": [
+      "textbox",
+    ],
+  },
+  {
+    "category": "primitive",
+    "id": "input-group",
+    "name": "Input Group",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "input-otp",
+    "name": "Input Otp",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "item",
+    "name": "Item",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "kbd",
+    "name": "Kbd",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "label",
+    "name": "Label",
+    "roles": [],
+  },
+  {
+    "category": "navigation",
+    "id": "menubar",
+    "name": "Menubar",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "native-select",
+    "name": "Native Select",
+    "roles": [],
+  },
+  {
+    "category": "navigation",
+    "id": "navigation-menu",
+    "name": "Navigation Menu",
+    "roles": [
+      "navigation",
+    ],
+  },
+  {
+    "category": "navigation",
+    "id": "pagination",
+    "name": "Pagination",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "popover",
+    "name": "Popover",
+    "roles": [],
+  },
+  {
+    "category": "feedback",
+    "id": "progress",
+    "name": "Progress",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "radio-group",
+    "name": "Radio Group",
+    "roles": [
+      "radiogroup",
+    ],
+  },
+  {
+    "category": "layout",
+    "id": "resizable",
+    "name": "Resizable",
+    "roles": [],
+  },
+  {
+    "category": "layout",
+    "id": "scroll-area",
+    "name": "Scroll Area",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "select",
+    "name": "Select",
+    "roles": [
+      "listbox",
+    ],
+  },
+  {
+    "category": "layout",
+    "id": "separator",
+    "name": "Separator",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "sheet",
+    "name": "Sheet",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "sidebar",
+    "name": "Sidebar",
+    "roles": [],
+  },
+  {
+    "category": "feedback",
+    "id": "skeleton",
+    "name": "Skeleton",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "slider",
+    "name": "Slider",
+    "roles": [
+      "slider",
+    ],
+  },
+  {
+    "category": "feedback",
+    "id": "sonner",
+    "name": "Sonner",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "spinner",
+    "name": "Spinner",
+    "roles": [],
+  },
+  {
+    "category": "form",
+    "id": "switch",
+    "name": "Switch",
+    "roles": [
+      "switch",
+    ],
+  },
+  {
+    "category": "data-display",
+    "id": "table",
+    "name": "Table",
+    "roles": [],
+  },
+  {
+    "category": "navigation",
+    "id": "tabs",
+    "name": "Tabs",
+    "roles": [
+      "tablist",
+    ],
+  },
+  {
+    "category": "form",
+    "id": "textarea",
+    "name": "Textarea",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "toggle",
+    "name": "Toggle",
+    "roles": [],
+  },
+  {
+    "category": "primitive",
+    "id": "toggle-group",
+    "name": "Toggle Group",
+    "roles": [],
+  },
+  {
+    "category": "overlay",
+    "id": "tooltip",
+    "name": "Tooltip",
+    "roles": [
+      "tooltip",
+    ],
+  },
+]
+`;

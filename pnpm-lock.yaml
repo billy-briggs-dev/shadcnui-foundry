@@ -169,15 +169,36 @@ importers:
 
   packages/cli:
     dependencies:
+      '@shadcnui-foundry/a11y-rules':
+        specifier: workspace:*
+        version: link:../a11y-rules
+      '@shadcnui-foundry/analyzer':
+        specifier: workspace:*
+        version: link:../analyzer
+      '@shadcnui-foundry/angular':
+        specifier: workspace:*
+        version: link:../angular
       '@shadcnui-foundry/core':
         specifier: workspace:*
         version: link:../core
       '@shadcnui-foundry/ir':
         specifier: workspace:*
         version: link:../ir
+      '@shadcnui-foundry/lit':
+        specifier: workspace:*
+        version: link:../lit
+      '@shadcnui-foundry/react':
+        specifier: workspace:*
+        version: link:../react
       '@shadcnui-foundry/registry-ingest':
         specifier: workspace:*
         version: link:../registry-ingest
+      '@shadcnui-foundry/svelte':
+        specifier: workspace:*
+        version: link:../svelte
+      '@shadcnui-foundry/vue':
+        specifier: workspace:*
+        version: link:../vue
       commander:
         specifier: ^12.1.0
         version: 12.1.0
