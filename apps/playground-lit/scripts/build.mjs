@@ -39,7 +39,8 @@ const components = [
   },
   {
     label: "Card",
-    preview: '<article class="card"><h3>Card title</h3><p>Generated component preview shell.</p></article>',
+    preview:
+      '<article class="card"><h3>Card title</h3><p>Generated component preview shell.</p></article>',
     code: await loadSnippet("card", "foundry-card.ts"),
   },
 ];

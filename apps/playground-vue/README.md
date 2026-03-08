@@ -6,6 +6,8 @@ Static Vue playground for previewing generated component output.
 
 - `pnpm --filter @shadcnui-foundry/playground-vue build` builds to `dist/index.html`
 - `pnpm --filter @shadcnui-foundry/playground-vue dev` serves the built playground locally
+- `pnpm --filter @shadcnui-foundry/playground-vue storybook` runs Storybook on port 6007
+- `pnpm --filter @shadcnui-foundry/playground-vue storybook:build` builds static Storybook output
 
 The page renders shell previews and source snippets for generated:
 

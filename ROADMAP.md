@@ -28,7 +28,7 @@ This file tracks implementation progress and future milestones for shadcnui-foun
 - [x] Complete shadcn/ui component catalog analysis
 - [x] MCP integration for live registry data
 - [x] IR snapshot tests for all components
-- [x] Storybook integration (apps/playground-react)
+- [x] Storybook integration (apps/playground-*)
 
 ## Phase 2 — Framework Packages (Button, Input, Card)
 
