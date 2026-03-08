@@ -109,58 +109,7 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 
 ## Implementation Roadmap
 
-### Phase 0 — Bootstrap ✅
-
-- [x] pnpm workspace + Turborepo
-- [x] TypeScript configs (base, node, library, react)
-- [x] Biome formatter + linter
-- [x] Changesets + commitlint + husky
-- [x] IR schemas (ComponentIR, PropSchema, VariantSchema, A11ySchema, TokenSchema)
-- [x] Core pipeline interfaces (Ingester, Analyzer, Transformer, Emitter, Validator)
-- [x] Pipeline orchestrator
-- [x] ShadcnRegistryIngester + ArtifactCache
-- [x] ShadcnAnalyzer + category classifier
-- [x] Stub framework packages (React, Vue, Svelte, Angular, Lit)
-- [x] Design token extraction
-- [x] Accessibility rules + validator
-- [x] CLI (foundry ingest / generate / list)
-- [x] VS Code workspace config
-- [x] GitHub Actions CI
-- [x] AGENTS.md + Copilot instructions
-
-### Phase 1 — IR + Ingest Pipeline
-
-- [x] Full prop extraction from TS source files in registry artifacts
-- [x] cva (class-variance-authority) variant parsing
-- [x] Complete shadcn/ui component catalog analysis
-- [x] MCP integration for live registry data
-- [x] IR snapshot tests for all components
-- [ ] Storybook integration (apps/playground-react)
-
-### Phase 2 — Framework Packages (Button, Input, Card)
-
-- [x] ReactEmitter: full TSX with forwarded refs, variants, a11y attributes
-- [x] VueEmitter: SFC with defineProps, defineEmits, useAttrs
-- [x] SvelteEmitter: Svelte 5 runes syntax
-- [x] AngularEmitter: standalone components with @Input
-- [x] LitEmitter: LitElement with reactive properties
-- [x] Cross-framework snapshot tests for Button, Input, Card
-
-### Phase 3 — Interactive Components
-
-- [x] Dialog, Popover, DropdownMenu, Select (overlay category)
-- [x] Focus trap integration
-- [x] Portal rendering strategy per framework
-- [x] Keyboard navigation tests
-- [x] Visual regression tests (Playwright)
-
-### Phase 4 — Docs, Publishing, Polish
-
-- [x] Docs site (apps/docs)
-- [x] npm publishing via changesets
-- [x] Component previews in playground apps
-- [x] Contribution guide
-- [x] Full WCAG 2.1 AA validation
+The full phased roadmap lives in [ROADMAP.md](./ROADMAP.md).
 
 ## Contributing
 
