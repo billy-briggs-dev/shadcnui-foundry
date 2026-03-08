@@ -7,12 +7,12 @@ import * as React from "react";
 import { cn } from "../utils/cn.js";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Accessibility attribute: aria-disabled */
+  "aria-disabled"?: string;
   /** Whether the button is disabled */
   disabled?: boolean;
   /** Variant: variant */
   variant?: "default" | "outline";
-  /** Accessibility attribute: aria-disabled */
-  aria-disabled?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

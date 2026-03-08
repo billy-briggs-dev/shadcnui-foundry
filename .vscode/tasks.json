@@ -71,6 +71,12 @@
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {
+      "label": "Parity scorecard",
+      "type": "shell",
+      "command": "pnpm parity:scorecard",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
       "label": "Docs dev",
       "type": "shell",
       "command": "pnpm --filter @shadcnui-foundry/docs dev",

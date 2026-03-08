@@ -46,6 +46,24 @@ function mapBaseElement(role: string | undefined): string {
       return "button";
     case "textbox":
       return "input";
+    case "checkbox":
+      return "input";
+    case "switch":
+      return "button";
+    case "tab":
+      return "button";
+    case "menu":
+      return "ul";
+    case "menuitem":
+      return "li";
+    case "listbox":
+      return "ul";
+    case "option":
+      return "li";
+    case "navigation":
+      return "nav";
+    case "dialog":
+      return "dialog";
     default:
       return "div";
   }
@@ -74,11 +92,15 @@ function ensureVariantProps(props: VuePropSpec[], variants: VueVariantSpec[]): V
     });
   }
 
-  return [...merged.values()].filter((prop) => prop.name !== "children");
+  return [...merged.values()]
+    .filter((prop) => prop.name !== "children")
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function createA11yProps(a11y: VueA11ySpec): VuePropSpec[] {
-  const attrs = [...new Set([...a11y.requiredAttributes, ...a11y.optionalAttributes])];
+  const attrs = [...new Set([...a11y.requiredAttributes, ...a11y.optionalAttributes])].sort(
+    (a, b) => a.localeCompare(b),
+  );
 
   return attrs
     .filter((attr) => attr.startsWith("aria-"))
@@ -136,7 +158,8 @@ export class VueEmitter implements Emitter {
       })
       .filter((line): line is string => typeof line === "string");
 
-    const variantDataAttrs = variants
+    const variantDataAttrs = [...variants]
+      .sort((a, b) => a.name.localeCompare(b.name))
       .map((variant) => `  :data-${variant.name}="props.${variant.name}"`)
       .join("\n");
 

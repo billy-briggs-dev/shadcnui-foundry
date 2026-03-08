@@ -28,6 +28,14 @@ type ReactSpec = {
   a11y: ReactA11ySpec;
 };
 
+function isIdentifier(name: string): boolean {
+  return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(name);
+}
+
+function toPropKey(name: string): string {
+  return isIdentifier(name) ? name : `"${name}"`;
+}
+
 function mapBaseElement(role: string | undefined): {
   htmlTag: string;
   domElement: string;
@@ -42,6 +50,34 @@ function mapBaseElement(role: string | undefined): {
       };
     case "textbox":
       return { htmlTag: "input", domElement: "HTMLInputElement", attrType: "InputHTMLAttributes" };
+    case "checkbox":
+      return { htmlTag: "input", domElement: "HTMLInputElement", attrType: "InputHTMLAttributes" };
+    case "switch":
+      return {
+        htmlTag: "button",
+        domElement: "HTMLButtonElement",
+        attrType: "ButtonHTMLAttributes",
+      };
+    case "tab":
+      return {
+        htmlTag: "button",
+        domElement: "HTMLButtonElement",
+        attrType: "ButtonHTMLAttributes",
+      };
+    case "link":
+      return { htmlTag: "a", domElement: "HTMLAnchorElement", attrType: "AnchorHTMLAttributes" };
+    case "menu":
+      return { htmlTag: "ul", domElement: "HTMLUListElement", attrType: "HTMLAttributes" };
+    case "menuitem":
+      return { htmlTag: "li", domElement: "HTMLLIElement", attrType: "HTMLAttributes" };
+    case "listbox":
+      return { htmlTag: "ul", domElement: "HTMLUListElement", attrType: "HTMLAttributes" };
+    case "option":
+      return { htmlTag: "li", domElement: "HTMLLIElement", attrType: "HTMLAttributes" };
+    case "navigation":
+      return { htmlTag: "nav", domElement: "HTMLElement", attrType: "HTMLAttributes" };
+    case "dialog":
+      return { htmlTag: "dialog", domElement: "HTMLDialogElement", attrType: "HTMLAttributes" };
     default:
       return { htmlTag: "div", domElement: "HTMLDivElement", attrType: "HTMLAttributes" };
   }
@@ -78,7 +114,9 @@ function ensureVariantProps(props: ReactPropSpec[], variants: ReactVariantSpec[]
 }
 
 function createA11yPropSpecs(a11y: ReactA11ySpec): ReactPropSpec[] {
-  const attrs = [...new Set([...a11y.requiredAttributes, ...a11y.optionalAttributes])];
+  const attrs = [...new Set([...a11y.requiredAttributes, ...a11y.optionalAttributes])].sort(
+    (a, b) => a.localeCompare(b),
+  );
 
   return attrs
     .filter((attr) => attr.startsWith("aria-"))
@@ -100,7 +138,11 @@ export class ReactEmitter implements Emitter {
     );
     const allProps = ensureVariantProps(propsInterface, variants);
     const a11yProps = createA11yPropSpecs(a11y);
-    const allPropsWithA11y = [...allProps, ...a11yProps].filter((prop) => prop.name !== "children");
+    const allPropsWithA11y = [
+      ...new Map([...allProps, ...a11yProps].map((prop) => [prop.name, prop])).values(),
+    ]
+      .filter((prop) => prop.name !== "children")
+      .sort((a, b) => a.name.localeCompare(b.name));
 
     const primaryRole = a11y.roles[0];
     const roleAttr = primaryRole ? ` role="${primaryRole}"` : "";
@@ -109,14 +151,16 @@ export class ReactEmitter implements Emitter {
     const propsLines = allPropsWithA11y.map((p) => {
       const opt = p.required ? "" : "?";
       const comment = p.description ? `  /** ${p.description} */\n` : "";
-      return `${comment}  ${p.name}${opt}: ${p.type};`;
+      return `${comment}  ${toPropKey(p.name)}${opt}: ${p.type};`;
     });
 
     const defaultsLines = allPropsWithA11y
-      .filter((p) => p.defaultValue !== undefined)
+      .filter((p) => p.defaultValue !== undefined && isIdentifier(p.name))
       .map((p) => `  ${p.name} = ${p.defaultValue},`);
 
-    const variantNames = variants.map((variant) => variant.name);
+    const variantNames = [...variants]
+      .map((variant) => variant.name)
+      .sort((a, b) => a.localeCompare(b));
     const variantDataAttrs = variantNames
       .map((name) => `        data-${name}={${name} !== undefined ? ${name} : undefined}`)
       .join("\n");

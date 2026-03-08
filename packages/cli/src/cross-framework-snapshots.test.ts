@@ -226,4 +226,71 @@ describe("cross-framework snapshots", () => {
     const output = await generateAcrossFrameworks(ir);
     expect(output).toMatchSnapshot();
   });
+
+  it("generates stable snapshots for Dialog", async () => {
+    const ir = createComponentIR({
+      id: "dialog",
+      name: "Dialog",
+      description: "An overlay dialog component",
+      category: "overlay",
+      roles: ["dialog"],
+      props: [
+        {
+          name: "open",
+          type: "boolean",
+          required: false,
+          defaultValue: "false",
+          forwarded: false,
+        },
+      ],
+      variants: [
+        {
+          name: "size",
+          values: ["sm", "md", "lg"],
+          defaultValue: "md",
+          strategy: "class",
+        },
+      ],
+    });
+
+    const output = await generateAcrossFrameworks(ir);
+    expect(output).toMatchSnapshot();
+  });
+
+  it("generates stable snapshots for NavigationMenu edge-case props", async () => {
+    const ir = createComponentIR({
+      id: "navigation-menu",
+      name: "NavigationMenu",
+      description: "A composite navigation menu component",
+      category: "navigation",
+      roles: ["navigation"],
+      props: [
+        {
+          name: "aria-label",
+          type: "string",
+          required: false,
+          defaultValue: '"Main Navigation"',
+          forwarded: true,
+        },
+        {
+          name: "data-state",
+          type: "string",
+          required: false,
+          defaultValue: '"closed"',
+          forwarded: true,
+        },
+      ],
+      variants: [
+        {
+          name: "orientation",
+          values: ["horizontal", "vertical"],
+          defaultValue: "horizontal",
+          strategy: "class",
+        },
+      ],
+    });
+
+    const output = await generateAcrossFrameworks(ir);
+    expect(output).toMatchSnapshot();
+  });
 });

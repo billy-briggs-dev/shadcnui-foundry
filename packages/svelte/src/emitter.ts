@@ -13,6 +13,24 @@ function mapBaseElement(role: string | undefined): string {
       return "button";
     case "textbox":
       return "input";
+    case "checkbox":
+      return "input";
+    case "switch":
+      return "button";
+    case "tab":
+      return "button";
+    case "menu":
+      return "ul";
+    case "menuitem":
+      return "li";
+    case "listbox":
+      return "ul";
+    case "option":
+      return "li";
+    case "navigation":
+      return "nav";
+    case "dialog":
+      return "dialog";
     default:
       return "div";
   }
@@ -45,7 +63,9 @@ function ensureVariantProps(props: Prop[], variants: Variant[]): Prop[] {
     });
   }
 
-  return [...merged.values()].filter((prop) => prop.name !== "children");
+  return [...merged.values()]
+    .filter((prop) => prop.name !== "children")
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function mapPropType(prop: Prop): string {
@@ -93,9 +113,9 @@ export class SvelteEmitter implements Emitter {
     const ir = (transformed.spec as { ir?: ComponentIR }).ir;
     const mergedProps = ir ? ensureVariantProps(ir.props, ir.variants) : [];
     const a11yAttrs = ir
-      ? [...new Set([...ir.a11y.requiredAttributes, ...ir.a11y.optionalAttributes])].filter(
-          (attr) => attr.startsWith("aria-"),
-        )
+      ? [...new Set([...ir.a11y.requiredAttributes, ...ir.a11y.optionalAttributes])]
+          .sort((a, b) => a.localeCompare(b))
+          .filter((attr) => attr.startsWith("aria-"))
       : [];
 
     const allProps: Prop[] = [
@@ -131,7 +151,8 @@ export class SvelteEmitter implements Emitter {
       .filter((line): line is string => typeof line === "string");
 
     const variantDataAttrs = ir
-      ? ir.variants
+      ? [...ir.variants]
+          .sort((a, b) => a.name.localeCompare(b.name))
           .map((variant) => `  data-${variant.name}={propsWithDefaults.${variant.name}}`)
           .join("\n")
       : "";

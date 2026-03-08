@@ -52,7 +52,7 @@ describe("ReactEmitter", () => {
     expect(file.content).toContain("React.forwardRef<HTMLButtonElement, ButtonProps>");
     expect(file.content).toContain("data-variant={variant !== undefined ? variant : undefined}");
     expect(file.content).toContain('role="button"');
-    expect(file.content).toContain("aria-disabled?: string;");
+    expect(file.content).toContain('"aria-disabled"?: string;');
     expect(file.content).toMatchSnapshot();
   });
 

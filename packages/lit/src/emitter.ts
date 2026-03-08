@@ -14,12 +14,58 @@ function toPascalCase(value: string): string {
     .join("");
 }
 
+function isIdentifier(value: string): boolean {
+  return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(value);
+}
+
+function toSafeIdentifier(value: string): string {
+  if (isIdentifier(value)) {
+    return value;
+  }
+
+  const normalized = value
+    .replace(/[^A-Za-z0-9_$]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter((part) => part.length > 0)
+    .map((part, index) =>
+      index === 0
+        ? part.charAt(0).toLowerCase() + part.slice(1)
+        : part.charAt(0).toUpperCase() + part.slice(1),
+    )
+    .join("");
+
+  if (normalized.length > 0 && isIdentifier(normalized)) {
+    return normalized;
+  }
+
+  return `prop${toPascalCase(value.replace(/[^A-Za-z0-9]+/g, "-"))}`;
+}
+
 function mapBaseTag(role: string | undefined): string {
   switch (role) {
     case "button":
       return "button";
     case "textbox":
       return "input";
+    case "checkbox":
+      return "input";
+    case "switch":
+      return "button";
+    case "tab":
+      return "button";
+    case "menu":
+      return "ul";
+    case "menuitem":
+      return "li";
+    case "listbox":
+      return "ul";
+    case "option":
+      return "li";
+    case "navigation":
+      return "nav";
+    case "dialog":
+      return "dialog";
     default:
       return "div";
   }
@@ -71,7 +117,9 @@ function ensureVariantProps(props: Prop[], variants: Variant[]): Prop[] {
     });
   }
 
-  return [...merged.values()].filter((prop) => prop.name !== "children");
+  return [...merged.values()]
+    .filter((prop) => prop.name !== "children")
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 function inferDefault(prop: Prop): string | undefined {
@@ -116,24 +164,48 @@ export class LitEmitter implements Emitter {
         })),
     ];
 
-    const propertyLines = allProps
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((prop) => {
-        const type = mapPropertyType(prop);
-        const defaultValue = inferDefault(prop);
-        const init = defaultValue !== undefined ? ` = ${defaultValue}` : "";
-        return `  @property({ attribute: ${JSON.stringify(prop.name)} }) ${JSON.stringify(prop.name)}!: ${type}${init};`;
-      });
+    const sortedAllProps = [...allProps].sort((a, b) => a.name.localeCompare(b.name));
+    const propBindingByName = new Map<string, string>();
+    const usedIdentifiers = new Set<string>();
+
+    for (const prop of sortedAllProps) {
+      let identifier = toSafeIdentifier(prop.name);
+      let suffix = 1;
+      while (usedIdentifiers.has(identifier)) {
+        identifier = `${toSafeIdentifier(prop.name)}${suffix}`;
+        suffix += 1;
+      }
+      usedIdentifiers.add(identifier);
+      propBindingByName.set(prop.name, identifier);
+    }
+
+    const propertyLines = sortedAllProps.map((prop) => {
+      const type = mapPropertyType(prop);
+      const defaultValue = inferDefault(prop);
+      const init = defaultValue !== undefined ? ` = ${defaultValue}` : "";
+      const binding = propBindingByName.get(prop.name);
+      if (!binding) {
+        return "";
+      }
+      return `  @property({ attribute: ${JSON.stringify(prop.name)} }) ${binding}!: ${type}${init};`;
+    });
 
     const variantAttrs = ir
-      ? ir.variants
-          .map((variant) => `      data-${variant.name}=\"\${this[\"${variant.name}\"] ?? ""}\"`)
+      ? [...ir.variants]
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((variant) => {
+            const binding = propBindingByName.get(variant.name) ?? toSafeIdentifier(variant.name);
+            return `      data-${variant.name}=\"\${this.${binding} ?? ""}\"`;
+          })
           .join("\n")
       : "";
 
-    const ariaBindings = allProps
+    const ariaBindings = sortedAllProps
       .filter((prop) => prop.name.startsWith("aria-"))
-      .map((prop) => `      ${prop.name}=\"\${this[\"${prop.name}\"] ?? ""}\"`)
+      .map((prop) => {
+        const binding = propBindingByName.get(prop.name) ?? toSafeIdentifier(prop.name);
+        return `      ${prop.name}=\"\${this.${binding} ?? ""}\"`;
+      })
       .join("\n");
 
     const role = ir?.a11y.roles[0];

@@ -14,6 +14,34 @@ function toPascalCase(value: string): string {
     .join("");
 }
 
+function isIdentifier(value: string): boolean {
+  return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(value);
+}
+
+function toSafeIdentifier(value: string): string {
+  if (isIdentifier(value)) {
+    return value;
+  }
+
+  const normalized = value
+    .replace(/[^A-Za-z0-9_$]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter((part) => part.length > 0)
+    .map((part, index) =>
+      index === 0
+        ? part.charAt(0).toLowerCase() + part.slice(1)
+        : part.charAt(0).toUpperCase() + part.slice(1),
+    )
+    .join("");
+
+  if (normalized.length > 0 && isIdentifier(normalized)) {
+    return normalized;
+  }
+
+  return `prop${toPascalCase(value.replace(/[^A-Za-z0-9]+/g, "-"))}`;
+}
+
 function mapPropTypeToTs(prop: Prop): string {
   if (prop.type === "enum" && prop.values && prop.values.length > 0) {
     return prop.values.map((value) => `"${value}"`).join(" | ");
@@ -70,13 +98,24 @@ function createInputFields(props: Prop[]): string {
     return "";
   }
 
+  const usedIdentifiers = new Set<string>();
+
   return props
     .map((prop) => {
       const tsType = mapPropTypeToTs(prop);
       const defaultValue = inferDefaultValue(prop);
       const optionalSuffix = prop.required ? "" : "?";
       const initializer = defaultValue !== undefined ? ` = ${defaultValue}` : "";
-      return `  @Input() ${prop.name}${optionalSuffix}: ${tsType}${initializer};`;
+      let inputFieldName = toSafeIdentifier(prop.name);
+      let suffix = 1;
+      while (usedIdentifiers.has(inputFieldName)) {
+        inputFieldName = `${toSafeIdentifier(prop.name)}${suffix}`;
+        suffix += 1;
+      }
+      usedIdentifiers.add(inputFieldName);
+
+      const decorator = prop.name === inputFieldName ? "@Input()" : `@Input("${prop.name}")`;
+      return `  ${decorator} ${inputFieldName}${optionalSuffix}: ${tsType}${initializer};`;
     })
     .join("\n");
 }
@@ -114,6 +153,24 @@ function mapOverlayTag(role: string | undefined): string {
       return "input";
     case "button":
       return "button";
+    case "checkbox":
+      return "input";
+    case "switch":
+      return "button";
+    case "tab":
+      return "button";
+    case "menu":
+      return "ul";
+    case "menuitem":
+      return "li";
+    case "listbox":
+      return "ul";
+    case "option":
+      return "li";
+    case "navigation":
+      return "nav";
+    case "dialog":
+      return "dialog";
     default:
       return "div";
   }

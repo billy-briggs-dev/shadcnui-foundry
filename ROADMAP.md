@@ -57,11 +57,11 @@ This file tracks implementation progress and future milestones for shadcnui-foun
 
 ## Phase 5 — Generator Depth & Parity
 
-- [ ] Expand emitters to support broader shadcn catalog parity
-- [ ] Cover complex composite components and edge-case props
-- [ ] Enforce deterministic output guarantees (ordering/format invariants)
-- [ ] Add framework parity scorecard per component
-- [ ] Add parity snapshot coverage for priority component set
+- [x] Expand emitters to support broader shadcn catalog parity
+- [x] Cover complex composite components and edge-case props
+- [x] Enforce deterministic output guarantees (ordering/format invariants)
+- [x] Add framework parity scorecard per component
+- [x] Add parity snapshot coverage for priority component set
 
 ## Phase 6 — Quality Gates & Reliability
 

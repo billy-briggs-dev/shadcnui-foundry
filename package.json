@@ -13,6 +13,7 @@
     "test": "turbo run test",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
+    "parity:scorecard": "node ./scripts/parity-scorecard.mjs",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rimraf node_modules",
     "changeset": "changeset",
