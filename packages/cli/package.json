@@ -18,6 +18,7 @@
   "scripts": {
     "build": "tsup src/bin/foundry.ts src/index.ts --format esm --dts --clean",
     "dev": "tsup src/bin/foundry.ts --format esm --watch",
+    "foundry": "node ./dist/bin/foundry.js",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "biome check ./src",

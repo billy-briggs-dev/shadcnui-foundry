@@ -128,4 +128,56 @@ describe("AngularEmitter", () => {
     expect(output.content).toContain('@HostListener("document:keydown", ["$event"])');
     expect(output.content).toContain('if (event.key === "Escape")');
   });
+
+  it("emits accordion-specific state model and item directive", async () => {
+    const ir: ComponentIR = {
+      id: "accordion",
+      name: "Accordion",
+      description: "A collapsible accordion",
+      category: "composite",
+      props: [],
+      variants: [],
+      a11y: {
+        roles: ["region"],
+        requiredAttributes: [],
+        optionalAttributes: ["aria-label"],
+        keyboardInteractions: [],
+        focusManagement: "none",
+        liveRegion: false,
+        wcagCriteria: [],
+      },
+      dependencies: [],
+      tags: [],
+      provenance: {
+        registry: "test",
+        registryName: "accordion",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+      },
+      generatedAt: "2026-03-07T00:00:00.000Z",
+      irVersion: "1.0.0",
+    };
+
+    const emitter = new AngularEmitter();
+    const result = await emitter.emit({
+      componentId: "accordion",
+      framework: "angular",
+      spec: { ir },
+    });
+
+    expect(result.success).toBe(true);
+    if (!result.success) {
+      return;
+    }
+
+    const output = result.data[0];
+    expect(output).toBeDefined();
+    if (!output) {
+      return;
+    }
+
+    expect(output.content).toContain("export class FoundryAccordionItemDirective");
+    expect(output.content).toContain('@Input() type: "single" | "multiple" = "single";');
+    expect(output.content).toContain("toggleItem(itemValue: string): void");
+    expect(output.content).toContain("@ContentChildren(FoundryAccordionItemDirective)");
+  });
 });

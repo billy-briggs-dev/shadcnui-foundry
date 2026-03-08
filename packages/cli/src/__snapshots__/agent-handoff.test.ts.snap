@@ -1,0 +1,106 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`agent handoff bundle > snapshots IR + prompt and validates artifact contract 1`] = `
+{
+  "a11y": {
+    "focusManagement": "none",
+    "keyboardInteractions": [],
+    "liveRegion": false,
+    "optionalAttributes": [
+      "aria-label",
+    ],
+    "requiredAttributes": [],
+    "roles": [
+      "region",
+    ],
+    "wcagCriteria": [],
+  },
+  "category": "composite",
+  "dependencies": [],
+  "description": "Mock IR for testing handoff snapshots",
+  "generatedAt": "2026-03-07T00:00:00.000Z",
+  "id": "accordion",
+  "irVersion": "1.0.0",
+  "name": "Accordion",
+  "props": [
+    {
+      "defaultValue": ""single"",
+      "forwarded": false,
+      "name": "type",
+      "required": false,
+      "type": "enum",
+      "values": [
+        "single",
+        "multiple",
+      ],
+    },
+  ],
+  "provenance": {
+    "fetchedAt": "2026-03-07T00:00:00.000Z",
+    "registry": "shadcn/ui",
+    "registryName": "accordion",
+    "sourceUrl": "https://example.test/accordion.json",
+  },
+  "tags": [
+    "test",
+  ],
+  "variants": [
+    {
+      "defaultValue": "md",
+      "name": "size",
+      "strategy": "class",
+      "values": [
+        "sm",
+        "md",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`agent handoff bundle > snapshots IR + prompt and validates artifact contract 2`] = `
+"# Agent Handoff: accordion
+
+You are implementing full generation logic for one shadcn/ui component.
+
+## Inputs
+
+- Component: \`accordion\`
+- Target framework package: \`packages/react\`
+- IR file: \`<IR_PATH>\`
+- Raw artifact file: \`<ARTIFACT_PATH>\`
+
+## Objectives
+
+1. Implement component-specific generation logic (not generic scaffold output).
+2. Preserve pipeline contracts: transformer returns \`PipelineResult\`, emitter returns \`GeneratedFile[]\`.
+3. Keep generated headers and \`irHash\` behavior unchanged.
+4. Add or update tests for this component in the target framework package.
+5. Create or update a structured Storybook CSF story file for this component under \`packages/react/stories/\`.
+
+## Story Requirements
+
+- Do not create source-dump shell stories (for example \`GeneratedShells\`/\`GeneratedStories\`).
+- Use a component-focused story file named after the component (for example \`accordion.stories.*\`).
+- Story filename/extension by framework is required:
+  - react: \`packages/react/stories/accordion.stories.tsx\`
+  - vue: \`packages/vue/stories/accordion.stories.ts\`
+  - svelte: \`packages/svelte/stories/accordion.stories.ts\`
+  - angular: \`packages/angular/stories/accordion.stories.ts\`
+  - lit: \`packages/lit/stories/accordion.stories.ts\`
+- Include at least three meaningful stories:
+  - Default state
+  - Variant/state example (size, type, disabled, open, etc.)
+  - Accessibility-focused example (labeling/keyboard/focus behavior)
+- Use framework-idiomatic CSF conventions and typed args where applicable.
+- Keep stories deterministic and reusable; avoid inline random data.
+
+## Acceptance Criteria
+
+- The generated output for \`accordion\` is component-aware and framework-idiomatic.
+- No regression in existing component generation.
+- Tests pass for the changed package.
+- Storybook stories for \`accordion\` are structured, component-focused, and ready to render in package-local Storybook.
+
+"
+`;

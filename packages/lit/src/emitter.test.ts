@@ -126,4 +126,60 @@ describe("LitEmitter", () => {
     expect(file.content).toContain('if (event.key === "Escape")');
     expect(file.content).toContain('data-foundry-overlay="dialog"');
   });
+
+  it("emits accordion-specific state model", async () => {
+    const ir: ComponentIR = {
+      id: "accordion",
+      name: "Accordion",
+      description: "A collapsible accordion",
+      category: "composite",
+      props: [],
+      variants: [],
+      a11y: {
+        roles: ["region"],
+        requiredAttributes: [],
+        optionalAttributes: ["aria-label"],
+        keyboardInteractions: [],
+        focusManagement: "none",
+        liveRegion: false,
+        wcagCriteria: [],
+      },
+      dependencies: [],
+      tags: [],
+      provenance: {
+        registry: "test",
+        registryName: "accordion",
+        fetchedAt: "2026-03-07T00:00:00.000Z",
+      },
+      generatedAt: "2026-03-07T00:00:00.000Z",
+      irVersion: "1.0.0",
+    };
+
+    const emitter = new LitEmitter();
+    const result = await emitter.emit({
+      componentId: "accordion",
+      framework: "lit",
+      spec: { ir },
+    });
+
+    expect(result.success).toBe(true);
+    if (!result.success) {
+      return;
+    }
+
+    const file = result.data[0];
+    expect(file).toBeDefined();
+    if (!file) {
+      return;
+    }
+
+    expect(file.content).toContain(
+      '@property({ type: String }) type: "single" | "multiple" = "single";',
+    );
+    expect(file.content).toContain("private toggleItem(itemValue: string): void");
+    expect(file.content).toContain(
+      'this.dispatchEvent(new CustomEvent<string | string[]>("value-change"',
+    );
+    expect(file.content).toContain('data-component="accordion"');
+  });
 });

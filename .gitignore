@@ -47,7 +47,7 @@ playwright-report/
 
 # Foundry cache
 .foundry/cache/
-**/.foundry/cache/
+**/.foundry/agent-jobs/
 **/.foundry/cache-*/
 
 # Storybook build output

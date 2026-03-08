@@ -14,9 +14,11 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
+    "storybook": "storybook dev -p 6107 -c ./.storybook-cjs",
+    "storybook:build": "storybook build -c ./.storybook-cjs",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check ./src",
+    "lint": "biome check ./src ./stories ./.storybook-cjs",
     "clean": "rimraf dist"
   },
   "dependencies": {
@@ -24,11 +26,15 @@
     "@shadcnui-foundry/ir": "workspace:*"
   },
   "devDependencies": {
+    "@storybook/vue3": "^8.6.14",
+    "@storybook/vue3-vite": "^8.6.14",
     "@shadcnui-foundry/typescript-config": "workspace:*",
     "@shadcnui-foundry/vitest-config": "workspace:*",
     "rimraf": "^6.0.1",
+    "storybook": "^8.6.14",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
+    "vite": "^6.3.5",
     "vitest": "^3.0.5"
   }
 }

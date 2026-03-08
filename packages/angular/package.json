@@ -6,26 +6,42 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" }
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   },
   "files": ["dist"],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
+    "storybook": "storybook dev -p 6109 -c ./.storybook-cjs",
+    "storybook:build": "storybook build -c ./.storybook-cjs",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check ./src",
+    "lint": "biome check ./src ./stories ./.storybook-cjs",
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@angular/common": "^21.2.1",
+    "@angular/core": "^21.2.1",
     "@shadcnui-foundry/core": "workspace:*",
-    "@shadcnui-foundry/ir": "workspace:*"
+    "@shadcnui-foundry/ir": "workspace:*",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "^0.16.1"
   },
   "devDependencies": {
+    "@angular/compiler": "^21.2.1",
+    "@angular/compiler-cli": "^21.2.1",
     "@shadcnui-foundry/typescript-config": "workspace:*",
     "@shadcnui-foundry/vitest-config": "workspace:*",
+    "@storybook/html": "^8.6.14",
+    "@storybook/html-vite": "^8.6.14",
     "rimraf": "^6.0.1",
+    "storybook": "^8.6.14",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
+    "vite": "^6.3.5",
     "vitest": "^3.0.5"
   }
 }

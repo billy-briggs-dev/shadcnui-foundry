@@ -8,7 +8,7 @@ implementations for **React**, **Vue**, **Svelte**, **Angular**, and **Lit/Web C
 
 ## Architecture
 
-```
+```text
 [shadcn/ui Registry] → Ingest → Analyze → Transform → Emit → [Generated Components]
                                                  ↓
                                             Validate (a11y-rules)
@@ -25,7 +25,7 @@ implementations for **React**, **Vue**, **Svelte**, **Angular**, and **Lit/Web C
 
 ## Monorepo Structure
 
-```
+```text
 /apps
   /docs                    # Documentation site
   /playground-react        # React component playground
@@ -79,20 +79,17 @@ pnpm check
 ### CLI Usage
 
 ```bash
-# List available components
-pnpm --filter @shadcnui-foundry/cli exec foundry list
+# Default flow: prepare per-component agent handoff bundles for all frameworks
+pnpm --filter @shadcnui-foundry/cli run foundry -- accordion
 
-# Ingest a component from the shadcn/ui registry
-pnpm --filter @shadcnui-foundry/cli exec foundry ingest button
-
-# Generate components for target frameworks
-pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,vue
+# Explicit handoff command (alias: agent-handoff)
+pnpm --filter @shadcnui-foundry/cli run foundry -- handoff accordion --framework react
 ```
 
 ## Tooling Choices
 
 | Tool | Choice | Reason |
-|------|--------|--------|
+| ----- | -------- | -------- |
 | Monorepo | pnpm workspaces + Turborepo | Best-in-class task caching and pipeline control |
 | Formatter/Linter | Biome | Single tool, zero config, fast, TypeScript-native |
 | Build | tsup | Zero-config, esbuild-powered, ESM+CJS+dts output |
@@ -104,7 +101,6 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 > has no plugin ecosystem debt, and produces identical formatting across all contributors.
 > Trade-off: fewer specialized lint rules (no `eslint-plugin-react-hooks` etc.), but for a code generation
 > pipeline this is acceptable — framework-specific lint rules belong in consumer projects, not the generator.
-
 > **tsup vs unbuild:** tsup is chosen because it produces clean ESM output with `.d.ts` declarations
 > in a single command, requires no configuration for simple packages, and is powered by esbuild.
 > unbuild (unjs) is excellent for dual CJS/ESM with better tree-shaking, but the added complexity
@@ -112,7 +108,9 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 
 ## Implementation Roadmap
 
-The full phased roadmap lives in [ROADMAP.md](./ROADMAP.md).
+The full phased roadmap lives in [docs/ROADMAP.md](./docs/ROADMAP.md).
+
+For a visual pipeline and command flow, see [docs/workflow.md](./docs/workflow.md).
 
 ## Contributing
 

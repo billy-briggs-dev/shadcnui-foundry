@@ -1,4 +1,3 @@
-export * from "./commands/ingest.js";
-export * from "./commands/generate.js";
-export * from "./commands/generate-all.js";
-export * from "./commands/list.js";
+export * from "./commands/agent-handoff.js";
+export * from "./commands/clean.js";
+export * from "./commands/jobs.js";

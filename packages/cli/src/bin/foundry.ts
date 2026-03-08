@@ -4,22 +4,76 @@
  * @description Entry point for the foundry CLI.
  */
 import { Command } from "commander";
-import { generateAllCommand } from "../commands/generate-all.js";
-import { generateCommand } from "../commands/generate.js";
-import { ingestCommand } from "../commands/ingest.js";
-import { listCommand } from "../commands/list.js";
+import { agentHandoffCommand, runAgentHandoff } from "../commands/agent-handoff.js";
+import { cleanCommand } from "../commands/clean.js";
+import { jobsCommand } from "../commands/jobs.js";
 
 const program = new Command();
+const DEFAULT_FRAMEWORKS = ["react", "vue", "svelte", "angular", "lit"] as const;
+const DEFAULT_SHARED_OUT_DIR = ".foundry/agent-jobs/_shared";
 
 program
   .name("foundry")
-  .description("shadcnui-foundry — multi-framework component generation pipeline")
+  .description("shadcnui-foundry — prompt-first component handoff pipeline")
   .version("0.0.0");
 
-program.addCommand(ingestCommand());
-program.addCommand(generateCommand());
-program.addCommand(generateAllCommand());
-program.addCommand(listCommand());
+program
+  .argument("[component]", "Default action: create agent handoff bundles for all frameworks")
+  .action(async (component: string | undefined) => {
+    if (!component) {
+      return;
+    }
+
+    const sharedResult = await runAgentHandoff(component, {
+      framework: "react",
+      cacheDir: ".foundry/cache",
+      outDir: DEFAULT_SHARED_OUT_DIR,
+    });
+
+    if (!sharedResult.success) {
+      for (const error of sharedResult.errors) {
+        process.stderr.write(`${error.code}: ${error.message}\n`);
+      }
+      process.exit(1);
+    }
+
+    const bundles = [];
+
+    for (const framework of DEFAULT_FRAMEWORKS) {
+      const result = await runAgentHandoff(component, {
+        framework,
+        cacheDir: ".foundry/cache",
+        outDir: `.foundry/agent-jobs/${framework}`,
+        sharedInputDir: DEFAULT_SHARED_OUT_DIR,
+      });
+
+      if (!result.success) {
+        for (const error of result.errors) {
+          process.stderr.write(`${error.code}: ${error.message}\n`);
+        }
+        process.exit(1);
+      }
+
+      bundles.push(result.data);
+    }
+
+    process.stdout.write(
+      `${JSON.stringify(
+        {
+          status: "ready",
+          component,
+          frameworks: DEFAULT_FRAMEWORKS,
+          bundles,
+        },
+        null,
+        2,
+      )}\n`,
+    );
+  });
+
+program.addCommand(agentHandoffCommand());
+program.addCommand(cleanCommand());
+program.addCommand(jobsCommand());
 
 program.parseAsync(process.argv).catch((err: unknown) => {
   process.stderr.write(`Error: ${String(err)}\n`);

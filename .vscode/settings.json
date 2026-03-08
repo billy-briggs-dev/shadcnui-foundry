@@ -2,7 +2,9 @@
   "terminal.integrated.env.windows": {
     "PATH": "${env:APPDATA}\\npm;${env:PATH}"
   },
+  "json.schemaDownload.enable": false,
   "vitest.maximumConfigs": 20,
   "vitest.nodeExecutable": "node",
-  "vitest.shellType": "terminal"
+  "vitest.shellType": "terminal",
+  "cSpell.words": ["shadcnui"]
 }

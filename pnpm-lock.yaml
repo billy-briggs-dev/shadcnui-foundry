@@ -39,176 +39,6 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
 
-  apps/docs:
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-
-  apps/playground-angular:
-    dependencies:
-      '@shadcnui-foundry/angular':
-        specifier: workspace:*
-        version: link:../../packages/angular
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      '@storybook/html':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))
-      '@storybook/html-vite':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      storybook:
-        specifier: ^8.6.14
-        version: 8.6.18(prettier@2.8.8)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.3.5
-        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
-
-  apps/playground-lit:
-    dependencies:
-      '@shadcnui-foundry/lit':
-        specifier: workspace:*
-        version: link:../../packages/lit
-      lit:
-        specifier: ^3.3.1
-        version: 3.3.2
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      '@storybook/web-components':
-        specifier: ^8.6.14
-        version: 8.6.18(lit@3.3.2)(storybook@8.6.18(prettier@2.8.8))
-      '@storybook/web-components-vite':
-        specifier: ^8.6.14
-        version: 8.6.18(lit@3.3.2)(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      storybook:
-        specifier: ^8.6.14
-        version: 8.6.18(prettier@2.8.8)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.3.5
-        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
-
-  apps/playground-react:
-    dependencies:
-      '@shadcnui-foundry/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      react:
-        specifier: ^19.1.1
-        version: 19.2.4
-      react-dom:
-        specifier: ^19.1.1
-        version: 19.2.4(react@19.2.4)
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      '@storybook/react':
-        specifier: ^8.6.14
-        version: 8.6.18(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(storybook@8.6.18(prettier@2.8.8))(typescript@5.9.3)
-      '@storybook/react-vite':
-        specifier: ^8.6.14
-        version: 8.6.18(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.59.0)(storybook@8.6.18(prettier@2.8.8))(typescript@5.9.3)(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
-      '@types/react':
-        specifier: ^19.1.12
-        version: 19.2.14
-      '@types/react-dom':
-        specifier: ^19.1.9
-        version: 19.2.3(@types/react@19.2.14)
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      storybook:
-        specifier: ^8.6.14
-        version: 8.6.18(prettier@2.8.8)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.3.5
-        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
-
-  apps/playground-svelte:
-    dependencies:
-      '@shadcnui-foundry/svelte':
-        specifier: workspace:*
-        version: link:../../packages/svelte
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      '@storybook/html':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))
-      '@storybook/html-vite':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      storybook:
-        specifier: ^8.6.14
-        version: 8.6.18(prettier@2.8.8)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.3.5
-        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
-
-  apps/playground-vue:
-    dependencies:
-      '@shadcnui-foundry/vue':
-        specifier: workspace:*
-        version: link:../../packages/vue
-      vue:
-        specifier: ^3.5.21
-        version: 3.5.29(typescript@5.9.3)
-    devDependencies:
-      '@shadcnui-foundry/typescript-config':
-        specifier: workspace:*
-        version: link:../../tooling/typescript-config
-      '@storybook/vue3':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vue@3.5.29(typescript@5.9.3))
-      '@storybook/vue3-vite':
-        specifier: ^8.6.14
-        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3))
-      rimraf:
-        specifier: ^6.0.1
-        version: 6.1.3
-      storybook:
-        specifier: ^8.6.14
-        version: 8.6.18(prettier@2.8.8)
-      typescript:
-        specifier: ^5.7.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.3.5
-        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
-
   packages/a11y-rules:
     dependencies:
       '@shadcnui-foundry/core':
@@ -273,28 +103,61 @@ importers:
 
   packages/angular:
     dependencies:
+      '@angular/common':
+        specifier: ^21.2.1
+        version: 21.2.1(@angular/core@21.2.1(@angular/compiler@21.2.1)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2)
+      '@angular/core':
+        specifier: ^21.2.1
+        version: 21.2.1(@angular/compiler@21.2.1)(rxjs@7.8.2)(zone.js@0.16.1)
       '@shadcnui-foundry/core':
         specifier: workspace:*
         version: link:../core
       '@shadcnui-foundry/ir':
         specifier: workspace:*
         version: link:../ir
+      rxjs:
+        specifier: ^7.8.2
+        version: 7.8.2
+      tslib:
+        specifier: ^2.8.1
+        version: 2.8.1
+      zone.js:
+        specifier: ^0.16.1
+        version: 0.16.1
     devDependencies:
+      '@angular/compiler':
+        specifier: ^21.2.1
+        version: 21.2.1
+      '@angular/compiler-cli':
+        specifier: ^21.2.1
+        version: 21.2.1(@angular/compiler@21.2.1)(typescript@5.9.3)
       '@shadcnui-foundry/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config
       '@shadcnui-foundry/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest-config
+      '@storybook/html':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))
+      '@storybook/html-vite':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
+      storybook:
+        specifier: ^8.6.14
+        version: 8.6.18(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@5.9.3)(yaml@2.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
       vitest:
         specifier: ^3.0.5
         version: 3.2.4(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -431,15 +294,27 @@ importers:
       '@shadcnui-foundry/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest-config
+      '@storybook/web-components':
+        specifier: ^8.6.14
+        version: 8.6.18(lit@3.3.2)(storybook@8.6.18(prettier@2.8.8))
+      '@storybook/web-components-vite':
+        specifier: ^8.6.14
+        version: 8.6.18(lit@3.3.2)(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
+      storybook:
+        specifier: ^8.6.14
+        version: 8.6.18(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@5.9.3)(yaml@2.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
       vitest:
         specifier: ^3.0.5
         version: 3.2.4(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -452,6 +327,12 @@ importers:
       '@shadcnui-foundry/ir':
         specifier: workspace:*
         version: link:../ir
+      react:
+        specifier: ^19.1.1
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.1.1
+        version: 19.2.4(react@19.2.4)
     devDependencies:
       '@shadcnui-foundry/typescript-config':
         specifier: workspace:*
@@ -459,15 +340,33 @@ importers:
       '@shadcnui-foundry/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest-config
+      '@storybook/react':
+        specifier: ^8.6.14
+        version: 8.6.18(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(storybook@8.6.18(prettier@2.8.8))(typescript@5.9.3)
+      '@storybook/react-vite':
+        specifier: ^8.6.14
+        version: 8.6.18(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(rollup@4.59.0)(storybook@8.6.18(prettier@2.8.8))(typescript@5.9.3)(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
+      '@types/react':
+        specifier: ^19.1.12
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.1.9
+        version: 19.2.3(@types/react@19.2.14)
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
+      storybook:
+        specifier: ^8.6.14
+        version: 8.6.18(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@5.9.3)(yaml@2.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
       vitest:
         specifier: ^3.0.5
         version: 3.2.4(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -521,15 +420,27 @@ importers:
       '@shadcnui-foundry/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest-config
+      '@storybook/html':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))
+      '@storybook/html-vite':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
+      storybook:
+        specifier: ^8.6.14
+        version: 8.6.18(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@5.9.3)(yaml@2.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
       vitest:
         specifier: ^3.0.5
         version: 3.2.4(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -602,15 +513,27 @@ importers:
       '@shadcnui-foundry/vitest-config':
         specifier: workspace:*
         version: link:../../tooling/vitest-config
+      '@storybook/vue3':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vue@3.5.29(typescript@5.9.3))
+      '@storybook/vue3-vite':
+        specifier: ^8.6.14
+        version: 8.6.18(storybook@8.6.18(prettier@2.8.8))(vite@6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3))
       rimraf:
         specifier: ^6.0.1
         version: 6.1.3
+      storybook:
+        specifier: ^8.6.14
+        version: 8.6.18(prettier@2.8.8)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@5.9.3)(yaml@2.8.2)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
+      vite:
+        specifier: ^6.3.5
+        version: 6.4.1(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
       vitest:
         specifier: ^3.0.5
         version: 3.2.4(@types/node@25.3.5)(jiti@2.6.1)(yaml@2.8.2)
@@ -641,6 +564,41 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@angular/common@21.2.1':
+    resolution: {integrity: sha512-xhv2i1Q9s1kpGbGsfj+o36+XUC/TQLcZyRuRxn3GwaN7Rv34FabC88ycpvoE+sW/txj4JRx9yPA0dRSZjwZ+Gg==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+    peerDependencies:
+      '@angular/core': 21.2.1
+      rxjs: ^6.5.3 || ^7.4.0
+
+  '@angular/compiler-cli@21.2.1':
+    resolution: {integrity: sha512-qYCWLGtEju4cDtYLi4ZzbwKoF0lcGs+Lc31kuESvAzYvWNgk2EUOtwWo8kbgpAzAwSYodtxW6Q90iWEwfU6elw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+    hasBin: true
+    peerDependencies:
+      '@angular/compiler': 21.2.1
+      typescript: '>=5.9 <6.1'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@angular/compiler@21.2.1':
+    resolution: {integrity: sha512-FxWaSaii1vfHIFA+JksqQ8NGB2frfqCrs7Ju50a44kbwR4fmanfn/VsiS/CbwBp9vcyT/Br9X/jAG4RuK/U2nw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+
+  '@angular/core@21.2.1':
+    resolution: {integrity: sha512-pFTbg03s2ZI5cHNT+eWsGjwIIKiYkeAnodFbCAHjwFi9KCEYlTykFLjr9lcpGrBddfmAH7GE08Q73vgmsdcNHw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+    peerDependencies:
+      '@angular/compiler': 21.2.1
+      rxjs: ^6.5.3 || ^7.4.0
+      zone.js: ~0.15.0 || ~0.16.0
+    peerDependenciesMeta:
+      '@angular/compiler':
+        optional: true
+      zone.js:
+        optional: true
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
@@ -1840,6 +1798,10 @@ packages:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
 
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
+
   cli-cursor@5.0.0:
     resolution: {integrity: sha512-aCj4O5wKyszjMmDT4tZj93kxyydN/K5zPWSCe6/0AV/AA1pqe5ZBIw0a2ZfPQV7lL5/yb5HsUreJ6UFAF1tEQw==}
     engines: {node: '>=18'}
@@ -1851,6 +1813,10 @@ packages:
   cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
+
+  cliui@9.0.1:
+    resolution: {integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==}
+    engines: {node: '>=20'}
 
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -1899,6 +1865,9 @@ packages:
     resolution: {integrity: sha512-ZPMl0ZJbw74iS9LuX9YIAiW8pfM5p3yh2o/NbXHbkFuZzY5jvdi5jFycEOkmBW5H5I7nA+D6f3UcsCLP2vvSEA==}
     engines: {node: '>=16'}
     hasBin: true
+
+  convert-source-map@1.9.0:
+    resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
 
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
@@ -2869,9 +2838,16 @@ packages:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
 
+  readdirp@5.0.0:
+    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
+    engines: {node: '>= 20.19.0'}
+
   recast@0.23.11:
     resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
     engines: {node: '>= 4'}
+
+  reflect-metadata@0.2.2:
+    resolution: {integrity: sha512-urBwgfrvVP/eAyXx4hluJivBKzuEbSQs9rKWCrCkbSxNv8mxPcUZKeuoF3Uy4mJl3Lwprp6yy5/39VWigZ4K6Q==}
 
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
@@ -2917,6 +2893,9 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  rxjs@7.8.2:
+    resolution: {integrity: sha512-dhKf903U/PQZY6boNNtAGdWbG85WAbjT/1xYoZIC7FAY0yWapOBQVsVrDl58W86//e1VpMNBtRV4MaXfdMySFA==}
 
   safe-regex-test@1.1.0:
     resolution: {integrity: sha512-x/+Cz4YrimQxQccJf5mKEbIa1NzeCRNI5Ecl/ekmlYaampdNLPalVyIcCZNNH3MvmqBugV5TMYZXv0ljslUlaw==}
@@ -3398,9 +3377,17 @@ packages:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
 
+  yargs-parser@22.0.0:
+    resolution: {integrity: sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=23}
+
   yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}
     engines: {node: '>=12'}
+
+  yargs@18.0.0:
+    resolution: {integrity: sha512-4UEqdc2RYGHZc7Doyqkrqiln3p9X2DZVxaGbwhn2pi7MrRagKaOcIKe8L3OxYcbhXLgLFUS3zAYuQjKBQgmuNg==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=23}
 
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -3413,12 +3400,49 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
+  zone.js@0.16.1:
+    resolution: {integrity: sha512-dpvY17vxYIW3+bNrP0ClUlaiY0CiIRK3tnoLaGoQsQcY9/I/NpzIWQ7tQNhbV7LacQMpCII6wVzuL3tuWOyfuA==}
+
 snapshots:
 
   '@ampproject/remapping@2.3.0':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
+
+  '@angular/common@21.2.1(@angular/core@21.2.1(@angular/compiler@21.2.1)(rxjs@7.8.2)(zone.js@0.16.1))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/core': 21.2.1(@angular/compiler@21.2.1)(rxjs@7.8.2)(zone.js@0.16.1)
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
+  '@angular/compiler-cli@21.2.1(@angular/compiler@21.2.1)(typescript@5.9.3)':
+    dependencies:
+      '@angular/compiler': 21.2.1
+      '@babel/core': 7.29.0
+      '@jridgewell/sourcemap-codec': 1.5.5
+      chokidar: 5.0.0
+      convert-source-map: 1.9.0
+      reflect-metadata: 0.2.2
+      semver: 7.7.4
+      tslib: 2.8.1
+      yargs: 18.0.0
+    optionalDependencies:
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - supports-color
+
+  '@angular/compiler@21.2.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@angular/core@21.2.1(@angular/compiler@21.2.1)(rxjs@7.8.2)(zone.js@0.16.1)':
+    dependencies:
+      rxjs: 7.8.2
+      tslib: 2.8.1
+    optionalDependencies:
+      '@angular/compiler': 21.2.1
+      zone.js: 0.16.1
 
   '@babel/code-frame@7.29.0':
     dependencies:
@@ -4654,6 +4678,10 @@ snapshots:
     dependencies:
       readdirp: 4.1.2
 
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.0.0
+
   cli-cursor@5.0.0:
     dependencies:
       restore-cursor: 5.1.0
@@ -4668,6 +4696,12 @@ snapshots:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+
+  cliui@9.0.1:
+    dependencies:
+      string-width: 7.2.0
+      strip-ansi: 7.2.0
+      wrap-ansi: 9.0.2
 
   color-convert@2.0.1:
     dependencies:
@@ -4711,6 +4745,8 @@ snapshots:
       is-text-path: 2.0.0
       meow: 12.1.1
       split2: 4.2.0
+
+  convert-source-map@1.9.0: {}
 
   convert-source-map@2.0.0: {}
 
@@ -5669,6 +5705,8 @@ snapshots:
 
   readdirp@4.1.2: {}
 
+  readdirp@5.0.0: {}
+
   recast@0.23.11:
     dependencies:
       ast-types: 0.16.1
@@ -5676,6 +5714,8 @@ snapshots:
       source-map: 0.6.1
       tiny-invariant: 1.3.3
       tslib: 2.8.1
+
+  reflect-metadata@0.2.2: {}
 
   require-directory@2.1.1: {}
 
@@ -5739,6 +5779,10 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  rxjs@7.8.2:
+    dependencies:
+      tslib: 2.8.1
 
   safe-regex-test@1.1.0:
     dependencies:
@@ -6194,6 +6238,8 @@ snapshots:
 
   yargs-parser@21.1.1: {}
 
+  yargs-parser@22.0.0: {}
+
   yargs@17.7.2:
     dependencies:
       cliui: 8.0.1
@@ -6204,8 +6250,19 @@ snapshots:
       y18n: 5.0.8
       yargs-parser: 21.1.1
 
+  yargs@18.0.0:
+    dependencies:
+      cliui: 9.0.1
+      escalade: 3.2.0
+      get-caller-file: 2.0.5
+      string-width: 7.2.0
+      y18n: 5.0.8
+      yargs-parser: 22.0.0
+
   yocto-queue@0.1.0: {}
 
   yocto-queue@1.2.2: {}
 
   zod@3.25.76: {}
+
+  zone.js@0.16.1: {}

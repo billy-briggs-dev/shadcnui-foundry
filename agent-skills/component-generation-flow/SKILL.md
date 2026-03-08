@@ -1,30 +1,48 @@
 ---
 name: component-generation-flow
-description: Execute the canonical ingest-analyze-validate-generate workflow for shadcnui-foundry components. Use when adding or regenerating component outputs.
-compatibility: Requires built CLI and registry access or offline cache.
+description: Execute the canonical prompt-first handoff workflow for shadcnui-foundry components. Use when preparing per-framework agent jobs from registry artifacts and IR.
+compatibility: Requires built CLI and registry access (or offline cache).
 metadata:
   owner: shadcnui-foundry
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Component Generation Flow
 
 ## When to use this skill
-Use this skill when the user asks to ingest, analyze, validate, or generate component outputs.
+Use this skill when the user asks to create component handoff bundles for one or all frameworks.
 
 ## Steps
-1. Ingest component:
-   - `foundry ingest <component>`
-2. Analyze artifact to IR using `ShadcnAnalyzer`.
-3. Validate IR with `A11yValidator`.
-4. Generate outputs:
-   - `foundry generate <component> --target react,vue,svelte,angular,lit`
-5. Verify generated files include required header and `irHash`.
+1. Build the CLI package:
+   - `pnpm --filter @shadcnui-foundry/cli build`
+2. Create handoff bundles for all frameworks (default behavior):
+   - `pnpm --filter @shadcnui-foundry/cli run foundry -- <component>`
+3. Optional explicit single-framework handoff:
+   - `pnpm --filter @shadcnui-foundry/cli run foundry -- handoff <component> --framework <react|vue|svelte|angular|lit>`
+4. Inspect generated jobs:
+   - `pnpm --filter @shadcnui-foundry/cli run foundry -- jobs <component>`
+5. Confirm bundle outputs exist for each target framework:
+   - `packages/cli/.foundry/agent-jobs/<framework>/<component>/artifact.json`
+   - `packages/cli/.foundry/agent-jobs/<framework>/<component>/ir.json`
+   - `packages/cli/.foundry/agent-jobs/<framework>/<component>/prompt.md`
+
+## Outputs
+- Shared cache bundle:
+  - `packages/cli/.foundry/agent-jobs/_shared/<component>/artifact.json`
+  - `packages/cli/.foundry/agent-jobs/_shared/<component>/ir.json`
+- Framework bundles:
+  - `packages/cli/.foundry/agent-jobs/react/<component>/...`
+  - `packages/cli/.foundry/agent-jobs/vue/<component>/...`
+  - `packages/cli/.foundry/agent-jobs/svelte/<component>/...`
+  - `packages/cli/.foundry/agent-jobs/angular/<component>/...`
+  - `packages/cli/.foundry/agent-jobs/lit/<component>/...`
 
 ## Safety checks
-- Never silently overwrite files; use existing confirmation flow.
+- Never silently overwrite generated source files.
 - Do not make direct registry HTTP calls from library packages.
+- Treat `ir.json` as canonical when implementation details conflict with prompt wording.
 
 ## Validation
-- Run targeted tests for changed framework packages.
-- Run cross-framework snapshot tests when output semantics change.
+- For CLI changes, run:
+  - `pnpm --filter @shadcnui-foundry/cli test -- agent-handoff.test.ts`
+- For downstream framework implementation changes, run targeted package tests and parity checks.

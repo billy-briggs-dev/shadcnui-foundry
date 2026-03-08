@@ -41,21 +41,15 @@
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {
-      "label": "foundry ingest (prompt)",
+      "label": "foundry handoff (prompt)",
       "type": "shell",
-      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js ingest ${input:componentName}",
+      "command": "pnpm --filter @shadcnui-foundry/cli run foundry -- handoff ${input:componentName} --framework ${input:frameworkName} --out-dir .foundry/agent-jobs/${input:frameworkName}",
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {
-      "label": "foundry list",
+      "label": "agent jobs list (prompt)",
       "type": "shell",
-      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js list",
-      "presentation": { "reveal": "always", "panel": "shared" }
-    },
-    {
-      "label": "foundry generate (prompt)",
-      "type": "shell",
-      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js generate ${input:componentName} --target ${input:targetFrameworks}",
+      "command": "pnpm --filter @shadcnui-foundry/cli run foundry -- jobs ${input:componentName}",
       "presentation": { "reveal": "always", "panel": "shared" }
     },
     {
@@ -161,10 +155,11 @@
       "description": "shadcn/ui component name (e.g. button, dialog)"
     },
     {
-      "id": "targetFrameworks",
-      "type": "promptString",
-      "description": "Target frameworks (comma separated, e.g. react,vue,svelte,angular,lit)",
-      "default": "react,vue,svelte,angular,lit"
+      "id": "frameworkName",
+      "type": "pickString",
+      "description": "Target framework",
+      "options": ["react", "vue", "svelte", "angular", "lit"],
+      "default": "react"
     }
   ]
 }
