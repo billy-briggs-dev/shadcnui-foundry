@@ -156,11 +156,11 @@ pnpm --filter @shadcnui-foundry/cli exec foundry generate button --target react,
 
 ### Phase 4 — Docs, Publishing, Polish
 
-- [ ] Docs site (apps/docs)
-- [ ] npm publishing via changesets
-- [ ] Component previews in playground apps
-- [ ] Contribution guide
-- [ ] Full WCAG 2.1 AA validation
+- [x] Docs site (apps/docs)
+- [x] npm publishing via changesets
+- [x] Component previews in playground apps
+- [x] Contribution guide
+- [x] Full WCAG 2.1 AA validation
 
 ## Contributing
 

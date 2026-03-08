@@ -92,6 +92,9 @@ importers:
         specifier: workspace:*
         version: link:../ir
     devDependencies:
+      '@shadcnui-foundry/test-utils':
+        specifier: workspace:*
+        version: link:../test-utils
       '@shadcnui-foundry/typescript-config':
         specifier: workspace:*
         version: link:../../tooling/typescript-config

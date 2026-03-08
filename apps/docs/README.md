@@ -1,6 +1,14 @@
 # @shadcnui-foundry/docs
 
-Documentation site — to be implemented in Phase 4.
+Static documentation site for the foundry pipeline.
 
-This will be built with a static site generator (e.g., Astro or VitePress)
-and will showcase all generated components across frameworks.
+## Commands
+
+- `pnpm --filter @shadcnui-foundry/docs build` builds to `dist/index.html`
+- `pnpm --filter @shadcnui-foundry/docs dev` serves the built docs locally
+
+The page includes:
+
+- architecture and pipeline summary
+- quick-start and CLI usage commands
+- links to playgrounds and contribution documentation

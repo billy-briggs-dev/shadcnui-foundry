@@ -5,9 +5,9 @@
   "description": "shadcnui-foundry documentation site",
   "type": "module",
   "scripts": {
-    "dev": "echo 'docs site not yet implemented'",
-    "build": "echo 'docs site not yet implemented'",
-    "lint": "biome check ./src",
+    "dev": "node ./scripts/dev.mjs",
+    "build": "node ./scripts/build.mjs",
+    "lint": "biome check ./scripts",
     "clean": "rimraf dist"
   },
   "devDependencies": {

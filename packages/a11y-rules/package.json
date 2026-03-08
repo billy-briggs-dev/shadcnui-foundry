@@ -21,6 +21,7 @@
     "@shadcnui-foundry/ir": "workspace:*"
   },
   "devDependencies": {
+    "@shadcnui-foundry/test-utils": "workspace:*",
     "@shadcnui-foundry/typescript-config": "workspace:*",
     "@shadcnui-foundry/vitest-config": "workspace:*",
     "rimraf": "^6.0.1",

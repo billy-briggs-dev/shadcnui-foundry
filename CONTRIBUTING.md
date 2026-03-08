@@ -60,6 +60,21 @@ pnpm --filter @shadcnui-foundry/ir test     # Single package
 pnpm --filter @shadcnui-foundry/ir test -- --watch  # Watch mode
 ```
 
+Visual regression suite:
+
+```bash
+pnpm test:visual
+pnpm test:visual:update  # Regenerate baselines when intended
+```
+
+Build docs/playgrounds:
+
+```bash
+pnpm --filter @shadcnui-foundry/docs build
+pnpm --filter @shadcnui-foundry/playground-react build
+pnpm --filter @shadcnui-foundry/playground-vue build
+```
+
 ## Versioning
 
 This project uses [Changesets](https://github.com/changesets/changesets).

@@ -1,5 +1,14 @@
 # @shadcnui-foundry/playground-react
 
-React component playground — to be implemented in Phase 1/2.
+Static React playground for previewing generated component output.
 
-This will use Storybook or a Vite+React app to showcase generated React components.
+## Commands
+
+- `pnpm --filter @shadcnui-foundry/playground-react build` builds to `dist/index.html`
+- `pnpm --filter @shadcnui-foundry/playground-react dev` serves the built playground locally
+
+The page renders shell previews and source snippets for generated:
+
+- `Button`
+- `Input`
+- `Card`
