@@ -14,24 +14,29 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts --clean",
-    "storybook": "storybook dev -p 6107 -c ./.storybook-cjs",
-    "storybook:build": "storybook build -c ./.storybook-cjs",
+    "storybook": "storybook dev -p 6107 -c ./.storybook",
+    "storybook:build": "storybook build -c ./.storybook",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "lint": "biome check ./src ./stories ./.storybook-cjs",
+    "lint": "biome check ./src ./.storybook",
     "clean": "rimraf dist"
   },
   "dependencies": {
     "@shadcnui-foundry/core": "workspace:*",
-    "@shadcnui-foundry/ir": "workspace:*"
+    "@shadcnui-foundry/ir": "workspace:*",
+    "vue": "^3.5.22"
   },
   "devDependencies": {
-    "@storybook/vue3": "^8.6.14",
-    "@storybook/vue3-vite": "^8.6.14",
     "@shadcnui-foundry/typescript-config": "workspace:*",
     "@shadcnui-foundry/vitest-config": "workspace:*",
+    "@storybook/vue3": "^10.2.16",
+    "@storybook/vue3-vite": "^10.2.16",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
     "rimraf": "^6.0.1",
-    "storybook": "^8.6.14",
+    "storybook": "^10.2.16",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "vite": "^6.3.5",

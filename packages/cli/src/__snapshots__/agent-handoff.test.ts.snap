@@ -61,7 +61,9 @@ exports[`agent handoff bundle > snapshots IR + prompt and validates artifact con
 exports[`agent handoff bundle > snapshots IR + prompt and validates artifact contract 2`] = `
 "# Agent Handoff: accordion
 
-You are implementing full generation logic for one shadcn/ui component.
+You are implementing one framework-specific component as a reusable shared-library export.
+
+This handoff expects concrete, importable component code under the framework package, not string-based generators.
 
 ## Inputs
 
@@ -70,17 +72,29 @@ You are implementing full generation logic for one shadcn/ui component.
 - IR file: \`<IR_PATH>\`
 - Raw artifact file: \`<ARTIFACT_PATH>\`
 
-## Objectives
+## Primary Goal
 
-1. Implement component-specific generation logic (not generic scaffold output).
-2. Preserve pipeline contracts: transformer returns \`PipelineResult\`, emitter returns \`GeneratedFile[]\`.
-3. Keep generated headers and \`irHash\` behavior unchanged.
-4. Add or update tests for this component in the target framework package.
-5. Create or update a structured Storybook CSF story file for this component under \`packages/react/stories/\`.
+1. Use the provided IR and raw artifact as the single source of truth for this component.
+2. Implement framework-native component code that is directly importable from \`packages/react\`.
+3. Ensure Storybook stories use imports from framework source exports, not inline shell markup.
+4. Add or update tests for the framework component behavior and public API.
+
+## Required Output Shape
+
+- Create/update a framework component module for this component under \`packages/react/src/\`.
+- Export the component (and related public types/helpers if needed) from \`packages/react/src/index.ts\`.
+- Keep all implementation framework-idiomatic (React/Vue/Svelte/Angular/Lit conventions).
+- Include Tailwind utility classes/attributes using shadcn/ui defaults (tokens, spacing, typography, and state classes) instead of leaving markup unstyled.
+
+## Explicit Non-Goals
+
+- Do NOT create generator wrappers such as \`generateaccordionFiles\` APIs.
+- Do NOT emit component source as string templates inside TypeScript functions.
+- Do NOT create source-dump story shells (for example \`GeneratedShells\`/\`GeneratedStories\`).
+- Do NOT add unrelated framework changes outside this component scope.
 
 ## Story Requirements
 
-- Do not create source-dump shell stories (for example \`GeneratedShells\`/\`GeneratedStories\`).
 - Use a component-focused story file named after the component (for example \`accordion.stories.*\`).
 - Story filename/extension by framework is required:
   - react: \`packages/react/stories/accordion.stories.tsx\`
@@ -88,6 +102,8 @@ You are implementing full generation logic for one shadcn/ui component.
   - svelte: \`packages/svelte/stories/accordion.stories.ts\`
   - angular: \`packages/angular/stories/accordion.stories.ts\`
   - lit: \`packages/lit/stories/accordion.stories.ts\`
+- Stories must import component exports from \`../src/accordion.js\` or package entry exports.
+- Story examples should demonstrate Tailwind-styled output that reflects shadcn/ui default visual behavior.
 - Include at least three meaningful stories:
   - Default state
   - Variant/state example (size, type, disabled, open, etc.)
@@ -97,8 +113,8 @@ You are implementing full generation logic for one shadcn/ui component.
 
 ## Acceptance Criteria
 
-- The generated output for \`accordion\` is component-aware and framework-idiomatic.
-- No regression in existing component generation.
+- The output for \`accordion\` is a real, importable framework component library API.
+- Framework package entrypoint exports the component for shared usage.
 - Tests pass for the changed package.
 - Storybook stories for \`accordion\` are structured, component-focused, and ready to render in package-local Storybook.
 

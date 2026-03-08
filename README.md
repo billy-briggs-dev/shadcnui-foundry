@@ -38,11 +38,11 @@ implementations for **React**, **Vue**, **Svelte**, **Angular**, and **Lit/Web C
   /core                    # Pipeline interfaces + Pipeline orchestrator
   /registry-ingest         # shadcn/ui registry ingestion + caching
   /analyzer                # ComponentIR normalization
-  /react                   # React transformer + emitter
-  /vue                     # Vue transformer + emitter
-  /svelte                  # Svelte transformer + emitter
-  /angular                 # Angular transformer + emitter
-  /lit                     # Lit/Web Components transformer + emitter
+  /react                   # React
+  /vue                     # Vue
+  /svelte                  # Svelte
+  /angular                 # Angular
+  /lit                     # Lit/Web
   /tokens                  # Design token extraction
   /a11y-rules              # Accessibility validation
   /test-utils              # Test fixtures + assertion helpers

@@ -1,0 +1,50 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": ".",
+  "projects": {
+    "shadcnui-foundry-angular": {
+      "projectType": "application",
+      "root": ".",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": {
+              "base": "dist/angular-build"
+            },
+            "index": "src/index.html",
+            "tsConfig": "tsconfig.json",
+            "polyfills": ["zone.js"],
+            "assets": [],
+            "styles": ["src/globals.css"],
+            "scripts": [],
+            "browser": "src/storybook-main.ts"
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "shadcnui-foundry-angular:build",
+            "port": 6109,
+            "compodoc": false
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "shadcnui-foundry-angular:build",
+            "outputDir": "storybook-static",
+            "compodoc": false
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

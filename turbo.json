@@ -3,9 +3,14 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "storybook:build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "storybook:build": {
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["storybook-static/**"],
+      "outputLogs": "new-only"
     },
     "dev": {
       "cache": false,

@@ -9,7 +9,7 @@ This file tracks implementation progress and future milestones for shadcnui-foun
 - [x] Biome formatter + linter
 - [x] Changesets + commitlint + husky
 - [x] IR schemas (ComponentIR, PropSchema, VariantSchema, A11ySchema, TokenSchema)
-- [x] Core pipeline interfaces (Ingester, Analyzer, Transformer, Emitter, Validator)
+- [x] Core pipeline interfaces
 - [x] Pipeline orchestrator
 - [x] ShadcnRegistryIngester + ArtifactCache
 - [x] ShadcnAnalyzer + category classifier

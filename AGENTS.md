@@ -20,11 +20,11 @@ and generates idiomatic implementations for React, Vue, Svelte, Angular, and Lit
   /core                    # Pipeline interfaces + orchestration
   /registry-ingest         # shadcn/ui registry fetching + caching
   /analyzer                # Raw artifact → ComponentIR normalization
-  /react                   # React transformer + emitter
-  /vue                     # Vue transformer + emitter
-  /svelte                  # Svelte transformer + emitter
-  /angular                 # Angular transformer + emitter
-  /lit                     # Lit/Web Components transformer + emitter
+  /react                   # React
+  /vue                     # Vue
+  /svelte                  # Svelte
+  /angular                 # Angular
+  /lit                     # Lit/Web Components
   /tokens                  # Design token extraction + serialization
   /a11y-rules              # Accessibility validation rules
   /test-utils              # Shared test fixtures + assertions
@@ -104,16 +104,6 @@ Analyze the RawRegistryArtifact for "<NAME>" using ShadcnAnalyzer.
 Classify the component category using classifyComponent().
 Infer ARIA roles from the component name.
 Return a validated ComponentIR.
-```
-
-### Generate React component
-
-```
-Transform the ComponentIR for "<NAME>" using ReactTransformer.
-Emit TSX source using ReactEmitter.
-Include the @generated header comment.
-Set irHash to sha256(JSON.stringify(ir)).
-Output to packages/react/src/components/<name>/<ComponentName>.tsx.
 ```
 
 ### Write a test

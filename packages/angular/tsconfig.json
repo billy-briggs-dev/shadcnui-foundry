@@ -1,6 +1,11 @@
 {
   "extends": "@shadcnui-foundry/typescript-config/library.json",
-  "compilerOptions": { "outDir": "dist", "rootDir": "src" },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "outDir": "dist",
+    "rootDir": "src"
+  },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
