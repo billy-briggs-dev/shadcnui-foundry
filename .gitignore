@@ -49,3 +49,6 @@ playwright-report/
 .foundry/cache/
 **/.foundry/cache/
 **/.foundry/cache-*/
+
+# Storybook build output
+**/storybook-static/
