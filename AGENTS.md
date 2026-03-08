@@ -134,6 +134,22 @@ Return a ValidationReport with issues and passed flag.
 Report any A11Y001, A11Y002, A11Y003 violations.
 ```
 
+## Agent Skills
+
+This repository uses the Agent Skills directory format from agentskills.io.
+
+Skill index:
+- `agent-skills/README.md`
+
+Available skills:
+- `agent-skills/fast-local-validation/SKILL.md`
+- `agent-skills/component-generation-flow/SKILL.md`
+- `agent-skills/storybook-playground-parity/SKILL.md`
+- `agent-skills/safe-generated-file-updates/SKILL.md`
+- `agent-skills/framework-parity-checks/SKILL.md`
+
+Each skill includes YAML frontmatter (`name`, `description`) and markdown instructions.
+
 ## MCP Integration
 
 When MCP (Model Context Protocol) is configured:

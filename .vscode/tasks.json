@@ -45,6 +45,107 @@
       "type": "shell",
       "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js ingest ${input:componentName}",
       "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "foundry list",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js list",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "foundry generate (prompt)",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/cli exec node dist/bin/foundry.js generate ${input:componentName} --target ${input:targetFrameworks}",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Test visual",
+      "type": "shell",
+      "command": "pnpm test:visual",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Test visual (update snapshots)",
+      "type": "shell",
+      "command": "pnpm test:visual:update",
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Docs dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/docs dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "React playground dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-react dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Vue playground dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-vue dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Svelte playground dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-svelte dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Angular playground dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-angular dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Lit playground dev",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-lit dev",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Storybook React",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-react storybook",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Storybook Vue",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-vue storybook",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Storybook Svelte",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-svelte storybook",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Storybook Angular",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-angular storybook",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
+    },
+    {
+      "label": "Storybook Lit",
+      "type": "shell",
+      "command": "pnpm --filter @shadcnui-foundry/playground-lit storybook",
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "shared" }
     }
   ],
   "inputs": [
@@ -52,6 +153,12 @@
       "id": "componentName",
       "type": "promptString",
       "description": "shadcn/ui component name (e.g. button, dialog)"
+    },
+    {
+      "id": "targetFrameworks",
+      "type": "promptString",
+      "description": "Target frameworks (comma separated, e.g. react,vue,svelte,angular,lit)",
+      "default": "react,vue,svelte,angular,lit"
     }
   ]
 }

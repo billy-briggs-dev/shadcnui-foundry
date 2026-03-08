@@ -67,3 +67,15 @@ Do NOT silently overwrite existing files — check before writing and prompt for
 - Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `ci:`, `gen:`, `chore:`
 - Scope to the package: `feat(ir): add union prop type support`
 - Generated code commits: use `gen:` type
+
+## Agent Skills (Operational)
+
+Use the Agent Skills-formatted files in `agent-skills/`:
+
+- `agent-skills/fast-local-validation/SKILL.md`
+- `agent-skills/component-generation-flow/SKILL.md`
+- `agent-skills/storybook-playground-parity/SKILL.md`
+- `agent-skills/safe-generated-file-updates/SKILL.md`
+- `agent-skills/framework-parity-checks/SKILL.md`
+
+These skills use YAML frontmatter + markdown instructions per the Agent Skills specification.
