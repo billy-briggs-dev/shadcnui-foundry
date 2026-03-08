@@ -75,6 +75,9 @@ const html = `<!doctype html>
       <ul>
         <li>React previews: <code>pnpm --filter @shadcnui-foundry/playground-react dev</code></li>
         <li>Vue previews: <code>pnpm --filter @shadcnui-foundry/playground-vue dev</code></li>
+        <li>Svelte previews: <code>pnpm --filter @shadcnui-foundry/playground-svelte dev</code></li>
+        <li>Angular previews: <code>pnpm --filter @shadcnui-foundry/playground-angular dev</code></li>
+        <li>Lit previews: <code>pnpm --filter @shadcnui-foundry/playground-lit dev</code></li>
       </ul>
 
       <h2>Contributing</h2>

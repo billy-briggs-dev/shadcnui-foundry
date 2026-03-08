@@ -1,0 +1,21 @@
+{
+  "name": "@shadcnui-foundry/playground-lit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Lit component playground for generated components",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./scripts/dev.mjs",
+    "build": "node ./scripts/build.mjs",
+    "lint": "biome check ./scripts",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@shadcnui-foundry/lit": "workspace:*"
+  },
+  "devDependencies": {
+    "@shadcnui-foundry/typescript-config": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
+  }
+}

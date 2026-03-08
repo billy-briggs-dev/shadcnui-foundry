@@ -30,6 +30,9 @@ implementations for **React**, **Vue**, **Svelte**, **Angular**, and **Lit/Web C
   /docs                    # Documentation site
   /playground-react        # React component playground
   /playground-vue          # Vue component playground
+  /playground-svelte       # Svelte component playground
+  /playground-angular      # Angular component playground
+  /playground-lit          # Lit component playground
 /packages
   /ir                      # Zod schemas for ComponentIR
   /core                    # Pipeline interfaces + Pipeline orchestrator

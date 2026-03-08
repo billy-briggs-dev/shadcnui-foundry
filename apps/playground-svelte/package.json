@@ -1,0 +1,21 @@
+{
+  "name": "@shadcnui-foundry/playground-svelte",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Svelte component playground for generated components",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./scripts/dev.mjs",
+    "build": "node ./scripts/build.mjs",
+    "lint": "biome check ./scripts",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@shadcnui-foundry/svelte": "workspace:*"
+  },
+  "devDependencies": {
+    "@shadcnui-foundry/typescript-config": "workspace:*",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
+  }
+}
